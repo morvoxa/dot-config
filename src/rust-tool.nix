@@ -9,5 +9,7 @@
       "rustfmt"
     ])
     taplo
+    clang-tools
+    clang
   ];
 }
