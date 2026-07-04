@@ -25,10 +25,13 @@
           system = "x86_64-linux";
           modules = [
             ./src/configuration.nix
-            ./src/cosmic-de.nix
+            ./src/dwm-wm.nix
+            ./src/files-manager.nix
             ./src/editor.nix
             ./src/obs.nix
-            ./src/rust-tool.nix
+            ./src/rust-tools.nix
+            ./src/android-tools.nix
+            ./src/fonts-custom.nix
           ];
 
         };
