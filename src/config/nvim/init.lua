@@ -34,12 +34,14 @@ else
 		{ src = "https://github.com/stevearc/conform.nvim" },
 		{ src = "https://github.com/ibhagwan/fzf-lua" },
 	})
+	vim.cmd([[colorscheme retrobox]])
 	require("nvim-autopairs").setup({})
 	require("conform").setup({
 		formatters_by_ft = {
 			lua = { "stylua" },
 			rust = { "rustfmt" },
 			nix = { "nixfmt" },
+			toml = { "taplo" },
 		},
 		format_on_save = {
 			lsp_format = false,
