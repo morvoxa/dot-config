@@ -28,7 +28,7 @@
   boot.loader.grub.device = "nodev"; # or "nodev" for efi only
 
   # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   # networking.hostName = "nixos"; # Define your hostname.
 

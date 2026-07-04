@@ -1,10 +1,19 @@
 if vim.g.vscode then
+    -- System shared clipboard
+    vim.opt.clipboard = "unnamedplus"
     vim.g.mapleader = " "
-    vim.api.nvim_set_keymap('n', '<leader>e', "<Cmd>lua require('vscode').action('workbench.view.explorer')<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', '<leader>w', "<Cmd>lua require('vscode').action('workbench.action.files.save')<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', '<leader>x', "<Cmd>lua require('vscode').action('workbench.action.closeActiveEditor')<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', '<leader>ff', "<Cmd>lua require('vscode').action('workbench.action.quickOpen')<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', '<leader>c', "<Cmd>lua require('vscode').action('workbench.action.terminal.toggleTerminal')<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', '<leader>l', "<Cmd>lua require('vscode').action('workbench.action.nextEditor')<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', '<leader>h', "<Cmd>lua require('vscode').action('workbench.action.previousEditor')<CR>", { noremap = true, silent = true })
+
+    local function vscode_action(key, action_id, description)
+        vim.keymap.set('n', key, function()
+            require('vscode').action(action_id)
+        end, { silent = true, desc = description })
+    end
+
+    vscode_action('<leader>e',  'workbench.view.explorer',                 'VSCode: Open Sidebar Explorer')
+    vscode_action('<leader>w',  'workbench.action.files.save',              'VSCode: Save Active File')
+    vscode_action('<leader>x',  'workbench.action.closeActiveEditor',       'VSCode: Close Active Tab')
+    vscode_action('<leader>ff', 'workbench.action.quickOpen',               'VSCode: Find File (Quick Open)')
+    vscode_action('<leader>c',  'workbench.action.terminal.toggleTerminal', 'VSCode: Toggle Integrated Terminal')
+    vscode_action('<leader>l',  'workbench.action.nextEditor',              'VSCode: Next Tab / Editor')
+    vscode_action('<leader>h',  'workbench.action.previousEditor',          'VSCode: Previous Tab / Editor')
 end
