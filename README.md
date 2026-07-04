@@ -1,2 +1,2 @@
-# dot-config
-My computer config
+# dotfiles
+
