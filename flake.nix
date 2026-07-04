@@ -25,9 +25,8 @@
           system = "x86_64-linux";
           modules = [
             ./src/configuration.nix
-            ./src/kwm.nix
+            ./src/cosmic-de.nix
             ./src/editor.nix
-            ./src/obs.nix
             ./src/obs.nix
             ./src/rust-tool.nix
           ];
