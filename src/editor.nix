@@ -5,5 +5,9 @@
     neovim
     just
     nixfmt
+    stylua
+    fzf
+    ripgrep
+    fd
   ];
 }
