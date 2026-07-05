@@ -18,7 +18,6 @@
       river-kwm,
       fenix,
       xlibre-overlay,
-      nix-cachyos-kernel,
     }:
     {
 
