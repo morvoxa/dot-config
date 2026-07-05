@@ -9,5 +9,6 @@
     fzf
     ripgrep
     fd
+    tree-sitter
   ];
 }

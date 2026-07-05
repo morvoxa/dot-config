@@ -1,5 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, xlibre-overlay, ... }: {
+  imports = [
+    xlibre-overlay.nixosModules.overlay-xlibre-xserver
+    xlibre-overlay.nixosModules.overlay-xlibre-xf86-input-libinput
 
+  ];
   services.displayManager.ly.enable = true;
   services.xserver = {
     enable = true;
@@ -18,5 +22,6 @@
     alacritty
     firefox
     xclip
+    fastfetch
   ];
 }
