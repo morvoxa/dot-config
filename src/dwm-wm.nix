@@ -33,7 +33,6 @@
         #!/bin/sh
 
         INTERFACE="wlp0s29u1u1"
-
         OLD_RX=$(cat /proc/net/dev | grep "$INTERFACE" | ${pkgs.gawk}/bin/awk '{print $2}')
         OLD_TX=$(cat /proc/net/dev | grep "$INTERFACE" | ${pkgs.gawk}/bin/awk '{print $10}')
 
@@ -86,6 +85,5 @@
     firefox
     xclip
     fastfetch
-    xsetroot
   ];
 }

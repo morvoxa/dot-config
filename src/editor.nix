@@ -10,5 +10,7 @@
     ripgrep
     fd
     tree-sitter
+    clang-tools
+    clang
   ];
 }

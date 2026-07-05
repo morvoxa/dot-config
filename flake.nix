@@ -18,7 +18,7 @@
 
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit river-kwm fenix xlibre-overlay; };
+          specialArgs = { inherit river-kwm xlibre-overlay; };
           system = "x86_64-linux";
           modules = [
             ./src/configuration.nix
