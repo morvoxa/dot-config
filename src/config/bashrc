@@ -1,1 +1,2 @@
 eval "$(starship init bash)"
+export PATH=~/pkg/bin:$PATH
