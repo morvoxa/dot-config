@@ -31,12 +31,13 @@ while true; do
 
 	TIME=$(date +'%H:%M')
 
-	xsetroot -name " ⬇️ $DOWN_STR ⬆️ $UP_STR | 🕒 $TIME "
+	xsetroot -name " down: $DOWN_STR upd: $UP_STR | time: $TIME "
 
 	OLD_RX=$NOW_RX
 	OLD_TX=$NOW_TX
 done &
 
-feh --bg-scale ~/Downloads/sebastian-schuster-4a-5UoXRv_o-unsplash.jpg &
+feh --bg-scale ~/dot-config/src/wal.jpg &
 
+xset r rate 200 35 &
 exec dwm
