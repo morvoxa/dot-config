@@ -184,7 +184,12 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+local net = require("net")
 awful.screen.connect_for_each_screen(function(s)
+	--custom net speed
+	local my_net = net.new({
+		interface = "wlp0s29u1u1",
+	})
 	-- Wallpaper
 	set_wallpaper(s)
 
@@ -242,6 +247,7 @@ awful.screen.connect_for_each_screen(function(s)
 			mykeyboardlayout,
 			wibox.widget.systray(),
 			mytextclock,
+			my_net,
 			s.mylayoutbox,
 		},
 	})
