@@ -17,4 +17,5 @@
         80
     ],
     "editor.formatOnSave": true,
+    "chat.disableAIFeatures": true,
 }
