@@ -28,8 +28,6 @@ else
 	require("plugins.autopairs")
 	require("plugins.snacks")
 	require("plugins.blink")
-	require("plugins.rust")
 	require("plugins.explorer")
-	require("plugins.colorrizer")
 	require("lsp.lua_ls")
 end

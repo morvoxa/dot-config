@@ -15,7 +15,6 @@ require("lazy").setup({
 			{ "neovim/nvim-lspconfig" },
 		},
 	},
-	{ "norcalli/nvim-colorizer.lua" },
 	{ "stevearc/conform.nvim" },
 	{ "j-hui/fidget.nvim" },
 	{ "nvim-tree/nvim-tree.lua" },
