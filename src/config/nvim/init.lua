@@ -20,6 +20,7 @@ else
 	require("options")
 	require("keymaps")
 	require("statusline")
+	require("lazy-reg")
 	require("colorscheme")
 	require("plugins.conform")
 	require("plugins.fidget")
@@ -29,5 +30,6 @@ else
 	require("plugins.blink")
 	require("plugins.rust")
 	require("plugins.explorer")
+	require("plugins.colorrizer")
 	require("lsp.lua_ls")
 end
