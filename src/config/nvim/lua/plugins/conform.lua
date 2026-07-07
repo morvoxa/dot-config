@@ -29,7 +29,7 @@ require("conform").setup({
 
 		-- Systems & Backend Languages
 		lua = { "stylua" },
-		rust = { "rustfmt" },
+		rust = { "rustfmt", "dioxus" },
 		go = { "gofmt" },
 		python = { "ruff_format" },
 		cs = { "csharpier" },
@@ -43,6 +43,7 @@ require("conform").setup({
 		nix = { "nixfmt" },
 		markdown = { "prettierd" },
 		mdx = { "prettierd" },
+		kdl = { "kdlfmt" },
 
 		-- Shell & DevOps
 		sh = { "shfmt" },
@@ -57,6 +58,13 @@ require("conform").setup({
 		elixir = { "mix" },
 		sql = { "sql_formatter" },
 		dart = { "dart_format" },
+	},
+	formatters = {
+		dioxus = {
+			command = "dx",
+			args = { "fmt", "--file", "$FILENAME" },
+			stdin = false, -- dx fmt mengubah file langsung, bukan lewat stdin
+		},
 	},
 
 	format_on_save = {
