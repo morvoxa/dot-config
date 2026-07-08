@@ -12,6 +12,27 @@ map("n", "<leader>w", ":w<cr>", {})
 map("n", "<leader>nh", ":nohl<cr>", {})
 map("n", "<leader>x", ":bdel<cr>", {})
 map("n", "<leader>c", ":!", {})
+vim.keymap.set("n", "<leader>hh", function()
+	if vim.lsp.inlay_hint then
+		local current_buf = vim.api.nvim_get_current_buf()
+		local is_enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = current_buf })
+		vim.lsp.inlay_hint.enable(not is_enabled, { bufnr = current_buf })
+	end
+
+	local diagnostics_config = vim.diagnostic.config()
+	local virtual_text_enabled = true
+
+	if diagnostics_config and diagnostics_config.virtual_text == false then
+		virtual_text_enabled = false
+	end
+
+	vim.diagnostic.config({
+		virtual_text = not virtual_text_enabled,
+	})
+
+	local status = not virtual_text_enabled and "ON" or "OFF"
+	vim.notify("LSP Hints & Errors: " .. status, vim.log.levels.INFO)
+end, { desc = "Toggle LSP Inlay Hints and Virtual Text" })
 --========================================================
 vim.cmd([[colorscheme catppuccin]])
 vim.pack.add({
@@ -99,7 +120,6 @@ vim.lsp.config("clangd", {
 		"--clang-tidy",
 		"--header-insertion=iwyu",
 	},
-	-- Menentukan filetype secara eksplisit
 	filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
 	init_options = {
 		fallbackFlags = { "-std=c++20" },
