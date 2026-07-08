@@ -197,3 +197,38 @@ function MyStatusLine()
 end
 
 vim.opt.statusline = "%!v:lua.MyStatusLine()"
+
+--========================================================
+vim.api.nvim_create_user_command("Bld", function()
+	vim.cmd("write") -- Otomatis simpan file
+
+	local has_build = vim.fn.isdirectory("build") == 1
+	local cmd = ""
+
+	-- 1. Deteksi Sistem Operasi & Tentukan Path Executable
+	local is_windows = vim.fn.has("win32") == 1
+	local exe_path = ""
+
+	if is_windows then
+		exe_path = ".\\build\\Debug\\Oop.exe"
+	else
+		exe_path = "./build/Oop" -- Standar Linux / macOS
+	end
+
+	-- 2. Cek waktu modifikasi terakhir CMakeLists.txt vs folder build
+	local cmake_time = vim.fn.getftime("CMakeLists.txt")
+	local build_time = vim.fn.getftime("build")
+
+	-- 3. Susun perintah berdasarkan kondisi file & OS
+	if not has_build or (cmake_time > build_time) then
+		-- Jika build belum ada atau CMakeLists.txt berubah: Konfigurasi ulang -> Compile -> Run
+		cmd = "cmake -B build && cmake --build build && " .. exe_path
+	else
+		-- Jika aman, langsung Compile -> Run
+		cmd = "cmake --build build && " .. exe_path
+	end
+
+	-- 4. Jalankan di terminal internal Neovim
+	vim.cmd("vsplit | terminal " .. cmd)
+	vim.cmd("startinsert")
+end, {})
