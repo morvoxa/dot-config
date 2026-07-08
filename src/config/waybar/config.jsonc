@@ -1,24 +1,9 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {
   "layer": "top",
   "position": "top",
   "height": 29,
   "modules-center": ["clock"],
-  "modules-right": [ "network", "tray"],
+  "modules-right": ["network", "tray"],
   "modules-left": ["niri/workspaces"],
 
   "niri/workspaces": {

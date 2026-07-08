@@ -9,20 +9,20 @@ require("conform").setup({
 		objcpp = { "clang-format" },
 
 		-- Web Development (Frontend & Backend)
-		javascript = { "prettierd" },
-		typescript = { "prettierd" },
-		javascriptreact = { "prettierd" },
-		typescriptreact = { "prettierd" },
-		json = { "prettierd" },
-		jsonc = { "prettierd" },
-		html = { "prettierd" },
-		css = { "prettierd" },
-		scss = { "prettierd" },
-		less = { "prettierd" },
-		graphql = { "prettierd" },
-		vue = { "prettierd" },
-		svelte = { "prettierd" },
-		astro = { "prettierd" },
+		javascript = { "prettier" },
+		typescript = { "prettier" },
+		javascriptreact = { "prettier" },
+		typescriptreact = { "prettier" },
+		json = { "prettier" },
+		jsonc = { "prettier" },
+		html = { "prettier" },
+		css = { "prettier" },
+		scss = { "prettier" },
+		less = { "prettier" },
+		graphql = { "prettier" },
+		vue = { "prettier" },
+		svelte = { "prettier" },
+		astro = { "prettier" },
 
 		-- Systems & Backend Languages
 		lua = { "stylua" },
@@ -35,11 +35,11 @@ require("conform").setup({
 		zig = { "zigfmt" },
 
 		-- Data, Config, & Markup
-		yaml = { "prettierd" },
+		yaml = { "prettier" },
 		toml = { "taplo" },
 		nix = { "nixfmt" },
-		markdown = { "prettierd" },
-		mdx = { "prettierd" },
+		markdown = { "prettier" },
+		mdx = { "prettier" },
 		kdl = { "kdlfmt" },
 
 		-- Shell & DevOps
