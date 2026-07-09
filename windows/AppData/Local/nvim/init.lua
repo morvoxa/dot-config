@@ -12,7 +12,7 @@ map("i", "jk", "<esc>", {})
 map("n", "<leader>w", ":w<cr>", {})
 map("n", "<leader>nh", ":nohl<cr>", {})
 map("n", "<leader>x", ":bdel<cr>", {})
-vim.keymap.set("n", "<leader>c", ":belowright vsplit | term ", { silent = false })
+map("n", "<leader>c", ":belowright 15 split | term ", { silent = false })
 
 vim.keymap.set("n", "<leader>hh", function()
 	if vim.lsp.inlay_hint then
