@@ -90,6 +90,8 @@ require("conform").setup({
 		lua = { "stylua" },
 		c = { "clang-format" },
 		cpp = { "clang-format" },
+		cmake = { "gersemi" },
+		zig = { "zigfmt" },
 	},
 	format_on_save = {
 		lsp_format = false,
@@ -125,6 +127,13 @@ vim.lsp.config("clangd", {
 		fallbackFlags = { "-std=c++20" },
 	},
 })
+--========================================================
+vim.lsp.config("zls", {
+	cmd = { "zls" },
+	filetypes = { "zig", "zir" },
+	root_markers = { "zls.json", "build.zig", ".git" },
+	workspace_required = false,
+})
 
 --========================================================
 vim.lsp.config("lua_ls", {
@@ -144,6 +153,7 @@ vim.lsp.config("lua_ls", {
 --========================================================
 vim.lsp.enable("clangd")
 vim.lsp.enable("lua_ls")
+vim.lsp.enable("zls")
 --========================================================
 
 local function get_status_components()
