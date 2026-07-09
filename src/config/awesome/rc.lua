@@ -591,3 +591,5 @@ client.connect_signal("unfocus", function(c)
 	c.border_color = beautiful.border_normal
 end)
 -- }}}
+awful.spawn.with_shell("xrandr --output HDMI-1 --mode 1920x1080 --rate 74.97")
+awful.spawn.with_shell("xset r rate 200 35")

@@ -6,7 +6,7 @@ local net_speed = {}
 
 function net_speed.new(user_config)
 	local config = user_config or {}
-	local interface = config.interface or "wlan0"
+	local interface = config.interface or "wlp0s29u1u1"
 	local timeout = config.timeout or 2
 	local font = config.font or "sans bold 9"
 
