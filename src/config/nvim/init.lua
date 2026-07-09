@@ -4,6 +4,7 @@ vim.g.mapleader = " "
 --========================================================
 o.number = true
 o.tabstop = 4
+o.shiftwidth = 4
 o.relativenumber = true
 o.splitright = true
 o.clipboard = "unnamedplus"
@@ -16,7 +17,9 @@ map("n", "<leader>x", ":bdel<cr>", {})
 map("n", "<leader>c", ":belowright 15 split | term ", { silent = false })
 map("n", "<leader>ff", ":FzfLua files<cr>", { silent = false })
 map("n", "<leader>e", ":Ex<cr>", { silent = false })
---========================================================
+map("v", "<Tab>", ">gv", { desc = "Indent ke kanan" })
+map("v", "<S-Tab>", "<gv", { desc = "Indent ke kiri" })
+
 vim.pack.add({
 	{ src = "https://github.com/windwp/nvim-autopairs" },
 	{ src = "https://github.com/folke/flash.nvim" },
