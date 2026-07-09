@@ -24,6 +24,12 @@ vim.pack.add({
 	{ src = "https://github.com/windwp/nvim-autopairs" },
 	{ src = "https://github.com/folke/flash.nvim" },
 	{ src = "https://github.com/ibhagwan/fzf-lua" },
+	{ src = "https://github.com/romus204/tree-sitter-manager.nvim" },
+})
+
+--========================================================
+require("tree-sitter-manager").setup({
+	auto_install = true,
 })
 --========================================================
 require("nvim-autopairs").setup({})
