@@ -1,3 +1,4 @@
+vim.env.CC = "clang"
 local o = vim.opt
 local map = vim.api.nvim_set_keymap
 vim.g.mapleader = " "
