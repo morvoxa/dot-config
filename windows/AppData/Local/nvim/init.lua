@@ -1,4 +1,3 @@
-vim.env.CC = "clang"
 local o = vim.opt
 local map = vim.api.nvim_set_keymap
 vim.g.mapleader = " "
@@ -35,7 +34,7 @@ vim.keymap.set("n", "<leader>hh", function()
 	vim.notify("LSP Hints & Errors: " .. status, vim.log.levels.INFO)
 end, { desc = "Toggle LSP Inlay Hints and Virtual Text" })
 --========================================================
-vim.cmd([[colorscheme catppuccin]])
+vim.cmd([[colorscheme industry]])
 vim.pack.add({
 	{ src = "https://github.com/folke/snacks.nvim" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
@@ -44,7 +43,7 @@ vim.pack.add({
 	{ src = "https://github.com/rafamadriz/friendly-snippets" },
 	{ src = "https://github.com/L3MON4D3/LuaSnip" },
 	{ src = "https://github.com/folke/flash.nvim" },
-	{ src = "https://github.com/romus204/tree-sitter-manager.nvim" },
+	{ src = "https://github.com/romus204/tree-sitter-manager.nvim", version = "v1.0.0" },
 	{ src = "https://github.com/j-hui/fidget.nvim" },
 })
 require("fidget").setup({})
