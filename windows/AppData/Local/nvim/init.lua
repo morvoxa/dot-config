@@ -12,7 +12,7 @@ map("i", "jk", "<esc>", {})
 map("n", "<leader>w", ":w<cr>", {})
 map("n", "<leader>nh", ":nohl<cr>", {})
 map("n", "<leader>x", ":bdel<cr>", {})
-map("n", "<leader>c", ":belowright vnew | setlocal buftype=nofile bufhidden=wipe noswapfile | r !", {})
+vim.keymap.set("n", "<leader>c", ":belowright vsplit | term ", { silent = false })
 
 vim.keymap.set("n", "<leader>hh", function()
 	if vim.lsp.inlay_hint then
