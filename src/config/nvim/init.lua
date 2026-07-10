@@ -8,7 +8,7 @@ o.shiftwidth = 4
 o.relativenumber = true
 o.splitright = true
 o.clipboard = "unnamedplus"
-vim.cmd[[colorscheme industry]]
+vim.cmd[[colorscheme catppuccin]]
 --========================================================
 map("i", "jk", "<esc>", {})
 map("n", "<leader>w", ":w<cr>", {})
