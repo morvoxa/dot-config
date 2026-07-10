@@ -1,0 +1,4 @@
+~/.netspeed.sh &
+xset r rate 200 35 &
+xrandr --output HDMI-1 --mode 1920x1080 --rate 74.97 &
+exec dwm
