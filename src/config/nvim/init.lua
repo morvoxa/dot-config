@@ -1,93 +1,119 @@
+-- =============================================================================
+-- 1. NEVIM BASIC OPTIONS
+-- =============================================================================
 local o = vim.opt
-local map = vim.api.nvim_set_keymap
-vim.g.mapleader = " "
---========================================================
+
 o.number = true
+o.relativenumber = true
 o.tabstop = 4
 o.shiftwidth = 4
-o.relativenumber = true
 o.splitright = true
 o.clipboard = "unnamedplus"
+
 vim.cmd([[colorscheme catppuccin]])
---========================================================
-map("i", "jk", "<esc>", {})
-map("n", "<leader>w", ":w<cr>", {})
-map("n", "<leader>nh", ":nohl<cr>", {})
-map("n", "<leader>x", ":bdel<cr>", {})
-map("n", "<leader>c", ":belowright 15 split | term ", { silent = false })
-map("n", "<leader>ff", ":FzfLua files<cr>", { silent = false })
+
+-- =============================================================================
+-- 2. GLOBAL KEYMAPS
+-- =============================================================================
+vim.g.mapleader = " "
+local map = vim.api.nvim_set_keymap
+
+map("i", "jk", "<esc>", { silent = true })
+map("n", "<leader>w", ":w<cr>", { silent = true })
+map("n", "<leader>nh", ":nohl<cr>", { silent = true })
+map("n", "<leader>x", ":bdel<cr>", { silent = true })
 map("n", "<leader>e", ":Ex<cr>", { silent = false })
+map("n", "<leader>ff", ":FzfLua files<cr>", { silent = false })
+map("n", "<leader>c", ":belowright 15 split | term ", { silent = false })
 map("v", "<Tab>", ">gv", { desc = "Indent ke kanan" })
 map("v", "<S-Tab>", "<gv", { desc = "Indent ke kiri" })
 
+-- =============================================================================
+-- 3. PLUGIN INITIALIZATION & SETUP
+-- =============================================================================
 vim.pack.add({
 	{ src = "https://github.com/windwp/nvim-autopairs" },
 	{ src = "https://github.com/folke/flash.nvim" },
 	{ src = "https://github.com/ibhagwan/fzf-lua" },
+	{ src = "https://github.com/j-hui/fidget.nvim" },
 	{ src = "https://github.com/romus204/tree-sitter-manager.nvim" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
+	{ src = "https://github.com/mrcjkb/rustaceanvim" },
+	{ src = "https://github.com/saghen/blink.cmp", version = "v1.10.2" },
 })
 
---========================================================
+require("fidget").setup({})
+require("nvim-autopairs").setup({})
+
 require("tree-sitter-manager").setup({
 	auto_install = true,
 })
---========================================================
-require("nvim-autopairs").setup({})
---========================================================
+
+require("blink.cmp").setup({
+	keymap = { preset = "default" },
+	appearance = {
+		nerd_font_variant = "mono",
+	},
+	completion = {
+		documentation = { auto_show = false },
+	},
+	sources = {
+		default = { "lsp", "path", "snippets", "buffer" },
+	},
+	fuzzy = {
+		implementation = "prefer_rust_with_warning",
+	},
+})
+
+-- =============================================================================
+-- 4. FLASH KEYMAPS & SETUP
+-- =============================================================================
 require("flash").setup({})
+
 vim.keymap.set({ "n", "x", "o" }, "s", function()
 	require("flash").jump()
 end, { desc = "Flash" })
+
 vim.keymap.set({ "n", "x", "o" }, "S", function()
 	require("flash").treesitter()
 end, { desc = "Flash Treesitter" })
+
 vim.keymap.set("o", "r", function()
 	require("flash").remote()
 end, { desc = "Remote Flash" })
+
 vim.keymap.set({ "x", "o" }, "R", function()
 	require("flash").treesitter_search()
 end, { desc = "Treesitter Search" })
+
 vim.keymap.set({ "c" }, "<c-s>", function()
 	require("flash").toggle()
 end, { desc = "Toggle Flash Search" })
---========================================================
+
+-- =============================================================================
+-- 5. CONFORM FORMATTER SETUP
+-- =============================================================================
 require("conform").setup({
 	formatters_by_ft = {
-		-- ========================================================
-		-- 1. COMPILED & SYSTEM LANGUAGES
-		-- ========================================================
 		c = { "clang-format" },
 		cpp = { "clang-format" },
-		rust = { "rustfmt" },
+		rust = { "rustfmt", "dioxus" },
 		go = { "gofmt", "goimports" },
 		zig = { "zigfmt" },
 		nim = { "nimpretty" },
 		java = { "google-java-format" },
 		kotlin = { "ktlint" },
 		d = { "dfmt" },
-
-		-- ========================================================
-		-- 2. SCRIPTING, AUTOMATION & LINUX SHELL
-		-- ========================================================
 		sh = { "shfmt" },
 		bash = { "shfmt" },
 		zsh = { "shfmt" },
 		fish = { "fish_indent" },
 		awk = { "awk" },
 		perl = { "perltidy" },
-
-		-- ========================================================
-		-- 3. BACKEND & SCRIPTING LANGUAGES
-		-- ========================================================
 		lua = { "stylua" },
-		python = { "isort", "black" }, -- Runs isort (imports) first, then black
+		python = { "isort", "black" },
 		ruby = { "rubocop" },
 		php = { "php_cs_fixer" },
-
-		-- ========================================================
-		-- 4. DEVOPS, BUILD TOOLS & LINUX SYSTEM CONFIGS
-		-- ========================================================
 		cmake = { "gersemi" },
 		make = { "checkmake" },
 		dockerfile = { "hadolint" },
@@ -95,47 +121,45 @@ require("conform").setup({
 		terraform = { "terraform_fmt" },
 		tf = { "terraform_fmt" },
 		hcl = { "terragrunt_fmt" },
-
-		-- ========================================================
-		-- 5. WEB DEVELOPMENT (Frontend, JavaScript & Templates)
-		-- ========================================================
-		javascript = { "prettierd", "prettier", stop_after_first = true },
-		typescript = { "prettierd", "prettier", stop_after_first = true },
-		javascriptreact = { "prettierd", "prettier", stop_after_first = true },
-		typescriptreact = { "prettierd", "prettier", stop_after_first = true },
-		vue = { "prettierd", "prettier", stop_after_first = true },
-		css = { "prettierd", "prettier", stop_after_first = true },
-		scss = { "prettierd", "prettier", stop_after_first = true },
-		less = { "prettierd", "prettier", stop_after_first = true },
-		html = { "prettierd", "prettier", stop_after_first = true },
-		graphql = { "prettierd", "prettier", stop_after_first = true },
+		javascript = { "prettierd" },
+		typescript = { "prettierd" },
+		javascriptreact = { "prettierd" },
+		typescriptreact = { "prettierd" },
+		vue = { "prettierd" },
+		css = { "prettierd" },
+		scss = { "prettierd" },
+		less = { "prettierd" },
+		html = { "prettierd" },
+		graphql = { "prettierd" },
 		blade = { "blade-formatter" },
-
-		-- ========================================================
-		-- 6. DATA, SERIALIZATION & CONFIGURATION FILES
-		-- ========================================================
-		json = { "prettierd", "prettier", stop_after_first = true },
-		jsonc = { "prettierd", "prettier", stop_after_first = true },
-		yaml = { "prettierd", "prettier", stop_after_first = true },
+		json = { "prettierd" },
+		jsonc = { "prettierd" },
+		yaml = { "prettierd" },
 		toml = { "taplo" },
 		ron = { "rustfmt" },
 		xml = { "xmlformat" },
-		ini = { "ini_formatter" }, -- Common for Linux .ini and .conf files
+		ini = { "ini_formatter" },
 		conf = { "ini_formatter" },
-		env = { "dotenv-linter" }, -- .env files
-
-		-- ========================================================
-		-- 7. DOCUMENTATION, NOTES & DATABASES
-		-- ========================================================
-		markdown = { "prettierd", "prettier", stop_after_first = true },
-		["markdown.mdx"] = { "prettierd", "prettier", stop_after_first = true },
+		env = { "dotenv-linter" },
+		markdown = { "prettierd" },
+		["markdown.mdx"] = { "prettierd" },
 		sql = { "sql_formatter" },
+	},
+	formatters = {
+		dioxus = {
+			cmd = "dx",
+			args = { "fmt", "--file", "$FILENAME" },
+			stdin = false,
+		},
 	},
 	format_on_save = {
 		lsp_format = false,
 	},
 })
---========================================================
+
+-- =============================================================================
+-- 6. STATUSLINE UTILITIES & DEFINITION
+-- =============================================================================
 local function get_formatter_status()
 	local bufnr = vim.api.nvim_get_current_buf()
 	local ft = vim.bo[bufnr].filetype
@@ -151,7 +175,6 @@ local function get_formatter_status()
 
 	local active_fmts = {}
 	local missing_fmts = {}
-
 	local formatters = conform.list_formatters(bufnr)
 	local fmt_names = {}
 
@@ -174,7 +197,6 @@ local function get_formatter_status()
 
 	for _, name in ipairs(fmt_names) do
 		local info = conform.get_formatter_info(name, bufnr)
-
 		if info and info.available then
 			table.insert(active_fmts, name .. " active")
 		else
@@ -190,21 +212,143 @@ local function get_formatter_status()
 		for _, v in ipairs(missing_fmts) do
 			table.insert(all_status, v)
 		end
-
 		return " ▼ {" .. table.concat(all_status, ", ") .. "}"
 	else
 		return " [!] {!No Formatter Configured}"
 	end
 end
 
+local function get_lsp_status()
+	local bufnr = vim.api.nvim_get_current_buf()
+	local ft = vim.bo[bufnr].filetype
+	local bt = vim.bo[bufnr].buftype
+
+	if ft == "" or bt ~= "" then
+		return ""
+	end
+
+	local clients = vim.lsp.get_clients({ bufnr = bufnr })
+	if #clients == 0 then
+		return " [LSP: None]"
+	end
+
+	local lsp_names = {}
+	for _, client in ipairs(clients) do
+		table.insert(lsp_names, client.name)
+	end
+
+	return " [LSP: " .. table.concat(lsp_names, ", ") .. "]"
+end
+
 function MyStatusLine()
 	local file_name = " %f %M "
 	local align = "%="
+	local lsp_info = get_lsp_status()
 	local fmt_info = get_formatter_status()
 	local location = " %l:%c %P "
 
-	return string.format("%s%s%s%s", file_name, align, fmt_info, location)
+	return string.format("%s%s%s%s%s", file_name, align, lsp_info, fmt_info, location)
 end
 
 vim.opt.statusline = "%!v:lua.MyStatusLine()"
---========================================================
+
+-- =============================================================================
+-- 7. NATIVE LSP SERVICES SETUP
+-- =============================================================================
+vim.lsp.config("tailwindcss", {
+	cmd = { "tailwindcss-language-server", "--stdio" },
+	root_dir = vim.fs.dirname(vim.fs.find({ ".git" }, { upward = true })[1]),
+	filetypes = {
+		"html",
+		"css",
+		"scss",
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"svelte",
+		"vue",
+		"rust",
+	},
+	init_options = {
+		userLanguages = {
+			rust = "html",
+		},
+	},
+	settings = {
+		tailwindCSS = {
+			experimental = {
+				classRegex = {
+					{ [[rsx![\s\S]*?class:[ ]*"([^"]*)"]], "([^ \t\r\n(]+)" },
+					{ [[class:[ ]*"([^"]*)"]], "([^ \t\r\n(]+)" },
+				},
+			},
+		},
+	},
+})
+vim.lsp.enable("tailwindcss")
+--npm install -g @fsouza/prettierd @tailwindcss/language-server prettier
+
+vim.lsp.config("lua_ls", {
+	cmd = { "lua-language-server" },
+	filetypes = { "lua" },
+	root_dir = vim.fs.dirname(vim.fs.find({ ".git", ".luarc.json", "init.lua" }, { upward = true })[1]),
+	settings = {
+		Lua = {
+			runtime = { version = "LuaJIT" },
+			diagnostics = { globals = { "vim" } },
+			workspace = {
+				checkThirdParty = false,
+				library = {
+					vim.env.VIMRUNTIME,
+					vim.fn.stdpath("config") .. "/lua",
+				},
+			},
+			telemetry = { enable = false },
+		},
+	},
+})
+vim.lsp.enable("lua_ls")
+
+vim.lsp.config("clangd", {
+	filetypes = { "c", "cpp", "h", "hpp", "cppm" },
+	cmd = {
+		"clangd",
+		"--background-index",
+		"--clang-tidy",
+		"--header-insertion=iwyu",
+		"--completion-style=detailed",
+		"--fallback-style=-std=c++20",
+		"-j=4",
+		"--malloc-trim",
+		"--pch-storage=memory",
+		"--limit-results=50",
+		"--limit-references=500",
+		"--enable-config",
+	},
+	root_dir = vim.fs.dirname(
+		vim.fs.find({ ".git", "compile_commands.json", "compile_flags.txt", "main.cpp" }, { upward = true })[1]
+	),
+})
+vim.lsp.enable("clangd")
+
+-- =============================================================================
+-- 8. TOGGLE LAPS & INTERACTIVE FEATURES
+-- =============================================================================
+vim.keymap.set("n", "<leader>h", function()
+	local is_hint_enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = 0 })
+	vim.lsp.inlay_hint.enable(not is_hint_enabled, { bufnr = 0 })
+
+	local config = vim.diagnostic.config()
+	local is_virtual_text_enabled = config and config.virtual_text
+
+	vim.diagnostic.config({
+		virtual_text = not is_virtual_text_enabled,
+	})
+
+	if not is_hint_enabled then
+		vim.notify("UI Hints & Errors: VISIBLE", vim.log.levels.INFO)
+	else
+		vim.notify("UI Hints & Errors: HIDDEN", vim.log.levels.WARN)
+	end
+end, { desc = "Toggle Inlay Hints & Virtual Text" })
