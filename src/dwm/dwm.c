@@ -226,6 +226,8 @@ static void updatetitle(Client *c);
 static void updatewindowtype(Client *c);
 static void updatewmhints(Client *c);
 static void view(const Arg *arg);
+static void viewnextlinear(const Arg *arg);
+static void viewprevlinear(const Arg *arg);
 static Client *wintoclient(Window w);
 static Monitor *wintomon(Window w);
 static int xerror(Display *dpy, XErrorEvent *ee);
@@ -2048,6 +2050,27 @@ updatewmhints(Client *c)
 			c->neverfocus = 0;
 		XFree(wmh);
 	}
+}
+
+
+void
+viewnextlinear(const Arg *arg)
+{
+	unsigned int curtag = selmon->tagset[selmon->seltags];
+	unsigned int nexttag = curtag << 1;
+	if (nexttag >= (1 << LENGTH(tags)))
+		nexttag = 1;
+	view(&(Arg){ .ui = nexttag });
+}
+
+void
+viewprevlinear(const Arg *arg)
+{
+	unsigned int curtag = selmon->tagset[selmon->seltags];
+	unsigned int prevtag = curtag >> 1;
+	if (!prevtag)
+		prevtag = 1 << (LENGTH(tags) - 1);
+	view(&(Arg){ .ui = prevtag });
 }
 
 void
