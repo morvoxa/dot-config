@@ -4,6 +4,7 @@ if vim.g.vscode then
 	vim.g.mapleader = " "
 
 	local vscode = require("vscode")
+	vim.notify = vscode.notify
 	local function vscode_map(mode, shortcut, vscode_command)
 		vim.keymap.set(mode, shortcut, function()
 			vscode.action(vscode_command)
@@ -17,7 +18,6 @@ if vim.g.vscode then
 	vscode_map("n", "<leader>e", "workbench.view.explorer")
 	vscode_map("n", "L", "workbench.action.nextEditor")
 	vscode_map("n", "H", "workbench.action.previousEditor")
-
 	vim.keymap.set("n", "<leader>nh", function()
 		vim.cmd("nohlsearch")
 		vscode.action("notifications.clearAll")
@@ -25,7 +25,6 @@ if vim.g.vscode then
 
 	vim.pack.add({ { src = "https://github.com/folke/flash.nvim" } })
 	require("flash").setup({})
-
 	local flash = require("flash")
 	local flash_maps = {
 		[{ "n", "x", "o" }] = { { "s", flash.jump, "Flash" }, { "S", flash.treesitter, "Flash Treesitter" } },
