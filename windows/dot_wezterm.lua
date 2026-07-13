@@ -28,6 +28,7 @@ config.default_prog = {
     -- Menggunakan string baru (\n) saat menggabungkan agar syntax PowerShell tidak rusak
     safe_msvc_script .. "\n" .. unalias_script,
 }
+config.font_size = 10.0
 
 config.default_cwd = wezterm.home_dir
 

@@ -35,7 +35,6 @@ vim.pack.add({
     {src="https://github.com/windwp/nvim-autopairs"},
     {src="https://github.com/ibhagwan/fzf-lua"},
 })
-
 require("nvim-autopairs").setup {}
 k.set({ "n", "x", "o" }, "s", function() require("flash").jump() end, { desc = "Flash" })
 k.set({ "n", "x", "o" }, "S", function() require("flash").treesitter() end, { desc = "Flash Treesitter" })
