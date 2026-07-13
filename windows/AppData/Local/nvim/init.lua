@@ -71,10 +71,10 @@ k.set("v", "<S-Tab>", "<gv", { desc = "Indent ke kiri" })
 
 -- 5. ENGINE FORMATTER
 local formatters = {
-	cpp = "clang-format",
-	hpp = "clang-format",
-	c = "clang-format",
-	h = "clang-format",
+	cpp = "clang-format --style=Google",
+	hpp = "clang-format --style=Google",
+	c = "clang-format --style=Google",
+	h = "clang-format --style=Google",
 	rs = "rustfmt",
 	lua = "stylua -",
 	ts = "prettierd %",
