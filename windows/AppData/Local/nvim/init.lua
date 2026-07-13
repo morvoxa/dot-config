@@ -1,5 +1,5 @@
 vim.env.CC = "gcc"
-vim.cmd([[colorscheme retrobox]])
+vim.cmd([[colorscheme sorbet]])
 local o = vim.opt
 local k = vim.keymap
 vim.g.mapleader = " "
