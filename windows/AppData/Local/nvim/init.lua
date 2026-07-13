@@ -90,6 +90,8 @@ local formatters = {
 	jsx = "prettierd %",
 	css = "prettierd %",
 	json = "prettierd %",
+	zig = "zig fmt --stdin",
+	zon = "zig fmt --stdin",
 }
 
 local function run_formatter(opts)
