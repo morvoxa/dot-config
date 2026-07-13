@@ -56,11 +56,19 @@ end, { desc = "Toggle Flash Search" })
 
 local formatters = {
 	cpp = "clang-format",
-	lua = "stylua -",
 	hpp = "clang-format",
 	c = "clang-format",
 	h = "clang-format",
+	rs = "rustfmt",
+	lua = "stylua -",
+	ts = "prettierd %",
+	tsx = "prettierd %",
+	js = "prettierd %",
+	jsx = "prettierd %",
+	css = "prettierd %",
+	json = "prettierd %",
 }
+
 local function run_formatter()
 	local ext = vim.fn.expand("%:e")
 	local cmd = formatters[ext]
