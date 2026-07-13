@@ -1,3 +1,5 @@
+vim.env.CC = "gcc"
+vim.cmd([[colorscheme retrobox]])
 local o = vim.opt
 local k = vim.keymap
 vim.g.mapleader = " "
@@ -8,6 +10,11 @@ vim.pack.add({
 	{ src = "https://github.com/windwp/nvim-autopairs" },
 	{ src = "https://github.com/ibhagwan/fzf-lua" },
 	{ src = "https://github.com/rcarriga/nvim-notify" },
+	{ src = "https://github.com/romus204/tree-sitter-manager.nvim.git" },
+})
+require("tree-sitter-manager").setup({
+	auto_install = true,
+	highlight = true,
 })
 
 local notify = require("notify")
