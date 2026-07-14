@@ -1,0 +1,19 @@
+{
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "vscode-neovim.compositeKeys": {
+    "jk": {
+      "command": "vscode-neovim.escape"
+    }
+  },
+  "window.restoreWindows": "none",
+  "workbench.startupEditor": "none",
+  "explorer.autoReveal": false,
+  "editor.lineNumbers": "relative",
+  "editor.wordWrap": "on",
+  "editor.wordWrapColumn": 80,
+  "editor.rulers": [80],
+  "editor.formatOnSave": true,
+  "chat.disableAIFeatures": true
+}

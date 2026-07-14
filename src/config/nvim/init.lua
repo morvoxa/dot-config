@@ -1,6 +1,9 @@
 if vim.g.vscode then
 	local o = vim.opt
 	o.clipboard = "unnamedplus"
+	o.ignorecase = true
+	o.smartcase = true
+	o.incsearch = true
 	vim.g.mapleader = " "
 
 	local vscode = require("vscode")
