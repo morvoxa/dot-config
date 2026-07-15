@@ -1,3 +1,0 @@
-eval "$(starship init bash)"
-alias ls="ls --color=auto"
-export PATH=~/.cargo/bin:~/.local/bin:$PATH
