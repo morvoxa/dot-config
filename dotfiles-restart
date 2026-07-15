@@ -162,7 +162,7 @@ else
 				print_content_row ".config/$folder_name (Settings)" "UPDATED" "$G"
 
 			# CASE 2: NEOVIM (Safe Merge - Mencegah Crash Lockfile)
-			elif [[ "$folder_name" == "nvim" ]]; then
+			elif [[ "$folder_name" == "nvim" || "xfce4" ]]; then
 				mkdir -p "$target_path"
 
 				# Copy file konfigurasi baru secara overwrite tanpa menghapus isi folder target (rm -rf)
