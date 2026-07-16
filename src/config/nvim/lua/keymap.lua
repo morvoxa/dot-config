@@ -45,3 +45,18 @@ end, { desc = "Treesitter Search" })
 k.set("c", "<c-s>", function()
 	require("flash").toggle()
 end, { desc = "Toggle Flash Search" })
+vim.keymap.set("n", "<leader>hh", function()
+	local is_hint = vim.lsp.inlay_hint and vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }) or false
+	local state = not is_hint
+
+	if vim.lsp.inlay_hint then
+		vim.lsp.inlay_hint.enable(state, { bufnr = 0 })
+	end
+	vim.diagnostic.config({ virtual_text = state })
+
+	vim.notify(
+		state and "Hints & Errors SHOWN" or "Screen Cleaned",
+		state and vim.log.levels.INFO or vim.log.levels.WARN,
+		{ title = "LSP Focus" }
+	)
+end, { desc = "Toggle Zen Mode" })
