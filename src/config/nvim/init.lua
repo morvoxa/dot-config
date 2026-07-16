@@ -48,6 +48,7 @@ else
 		{ src = "https://github.com/folke/flash.nvim" },
 		{ src = "https://github.com/j-hui/fidget.nvim" },
 		{ src = "https://github.com/windwp/nvim-autopairs" },
+		{ src = "https://github.com/mrcjkb/rustaceanvim" },
 		{ src = "https://github.com/L3MON4D3/LuaSnip" },
 		{ src = "https://github.com/rafamadriz/friendly-snippets" },
 		{ src = "https://github.com/ibhagwan/fzf-lua" },
