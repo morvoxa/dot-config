@@ -1,5 +1,13 @@
 require("conform").setup({
+	formatters = {
+		["clang-format"] = {
+			prepend_args = { "--style=Google" },
+		},
+	},
 	formatters_by_ft = {
+		c = { "clang-format" },
+		cpp = { "clang-format" },
+		h = { "clang-format" },
 		lua = { "stylua" },
 		rust = { "rustfmt" },
 		toml = { "taplo" },

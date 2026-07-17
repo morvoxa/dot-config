@@ -42,6 +42,7 @@ if vim.g.vscode then
 		end
 	end
 else
+	vim.env.CC = "gcc"
 	require("keymap")
 	vim.cmd([[colorscheme catppuccin]])
 	vim.pack.add({
@@ -61,4 +62,5 @@ else
 	require("plugins.etc")
 	require("status")
 	vim.lsp.enable("lua_ls")
+	vim.lsp.enable("clangd")
 end
