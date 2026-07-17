@@ -54,11 +54,11 @@ else
 		{ src = "https://github.com/ibhagwan/fzf-lua" },
 		{ src = "https://github.com/stevearc/conform.nvim" },
 		{ src = "https://github.com/saghen/blink.cmp", version = "v1.10.2" },
-		{ src = "https://github.com/rcarriga/nvim-notify" },
 		{ src = "https://github.com/romus204/tree-sitter-manager.nvim.git" },
 	})
 	require("plugins.conform")
 	require("plugins.blink")
 	require("plugins.etc")
 	require("status")
+	vim.lsp.enable("lua_ls")
 end
