@@ -62,4 +62,5 @@ else
 	require("plugins.etc")
 	require("status")
 	vim.lsp.enable("lua_ls")
+	vim.lsp.enable("clangd")
 end
