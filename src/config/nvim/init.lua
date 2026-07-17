@@ -55,22 +55,10 @@ else
 		{ src = "https://github.com/stevearc/conform.nvim" },
 		{ src = "https://github.com/saghen/blink.cmp", version = "v1.10.2" },
 		{ src = "https://github.com/rcarriga/nvim-notify" },
-		{ src = "https://github.com/neovim/nvim-lspconfig" },
 		{ src = "https://github.com/romus204/tree-sitter-manager.nvim.git" },
 	})
 	require("plugins.conform")
 	require("plugins.blink")
 	require("plugins.etc")
 	require("status")
-	vim.lsp.enable("clangd")
-	vim.lsp.enable("lua_ls")
-	--npm install -g @vtsls/language-server vscode-langservers-extracted @tailwindcss/language-server emmet-ls @prisma/language-server @fsouza/prettierd
-	vim.lsp.enable("vtsls")
-	vim.lsp.enable("cssls")
-	vim.lsp.enable("tailwindcss")
-	vim.lsp.enable("html")
-	vim.lsp.enable("jsonls")
-	vim.lsp.enable("emmet_ls")
-	vim.lsp.enable("eslint")
-	vim.lsp.enable("prismals")
 end
