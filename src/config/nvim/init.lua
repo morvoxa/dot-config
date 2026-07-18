@@ -63,4 +63,5 @@ else
 	require("status")
 	vim.lsp.enable("lua_ls")
 	vim.lsp.enable("clangd")
+	vim.lsp.enable("tailwindcss")
 end

@@ -19,24 +19,27 @@ local function check_lsp_status(bufnr)
 end
 
 local function check_formatter_status(bufnr)
-	local has_conform, conform = pcall(require, "conform")
-	if has_conform and conform then
-		local success, formatters = pcall(conform.list_formatters, bufnr)
-		if success and formatters and #formatters > 0 then
-			local fmt_names = {}
-			for _, f in ipairs(formatters) do
-				if f and type(f) == "table" and f.name then
-					table.insert(fmt_names, f.name)
-				elseif type(f) == "string" then
-					table.insert(fmt_names, f)
-				end
-			end
-			if #fmt_names > 0 then
-				return "formatter { " .. table.concat(fmt_names, ", ") .. " }"
-			end
-		end
-	end
-	return "formatter { not found }"
+    local has_conform, conform = pcall(require, "conform")
+    if has_conform and conform then
+        -- Mengambil daftar formatter yang dikonfigurasi untuk buffer saat ini
+        local success, formatters = pcall(conform.list_formatters, bufnr)
+        if success and formatters then
+            local fmt_names = {}
+            for _, f in ipairs(formatters) do
+                -- PERBAIKAN: Pastikan formatter bertipe table, punya nama, dan STATUSNYA AVAILABLE (tersedia/aktif)
+                if type(f) == "table" and f.name and f.available then
+                    table.insert(fmt_names, f.name)
+                elseif type(f) == "string" then
+                    table.insert(fmt_names, f)
+                end
+            end
+            
+            if #fmt_names > 0 then
+                return "formatter { " .. table.concat(fmt_names, ", ") .. " }"
+            end
+        end
+    end
+    return "formatter { none }"
 end
 
 _G.custom_statusline = function()
