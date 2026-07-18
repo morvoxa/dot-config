@@ -56,6 +56,9 @@ else
 		{ src = "https://github.com/stevearc/conform.nvim" },
 		{ src = "https://github.com/saghen/blink.cmp", version = "v1.10.2" },
 		{ src = "https://github.com/romus204/tree-sitter-manager.nvim.git" },
+		{ src = "https://github.com/nvim-neo-tree/neo-tree.nvim" },
+		{ src = "https://github.com/MunifTanjim/nui.nvim" },
+		{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	})
 	require("plugins.conform")
 	require("plugins.blink")
