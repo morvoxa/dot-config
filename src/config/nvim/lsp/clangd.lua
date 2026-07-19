@@ -9,9 +9,11 @@ return {
 			"--function-arg-placeholders",
 			"--fallback-style=llvm",
 			"-j=4",
-			"--extra-arg=-std=c++20",
 		},
-		filetypes = { "c", "cpp", "h" },
+		init_options = {
+			fallbackFlags = { "-std=c++20" },
+		},
+		filetypes = { "c", "cpp" },
 		settings = {
 			clangd = {
 				InlayHints = {
