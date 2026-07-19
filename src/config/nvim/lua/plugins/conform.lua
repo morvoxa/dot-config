@@ -16,6 +16,7 @@ require("conform").setup({
 		toml = { "taplo" },
 		json = { "prettierd" },
 		jsonc = { "prettierd" },
+		css = { "prettierd" },
 		yaml = { "prettierd" },
 		markdown = { "prettierd" },
 	},
