@@ -4,3 +4,4 @@ require("tree-sitter-manager").setup({
 })
 vim.notify = require("fidget").notify
 require("fidget").setup({})
+require("blink.indent").setup({})
