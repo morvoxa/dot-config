@@ -15,6 +15,7 @@ vim.pack.add({
 
 require("keymap")
 require("opt")
+require("status")
 require("plugins.conform")
 require("plugins.blink")
 require("plugins.etc")
