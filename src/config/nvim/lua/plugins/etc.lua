@@ -5,3 +5,14 @@ require("tree-sitter-manager").setup({
 vim.notify = require("fidget").notify
 require("fidget").setup({})
 require("blink.indent").setup({})
+vim.g.rustaceanvim = {
+	server = {
+		default_settings = {
+			["rust-analyzer"] = {
+				cargo = {
+					targetDir = true,
+				},
+			},
+		},
+	},
+}
