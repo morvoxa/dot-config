@@ -1,8 +1,8 @@
 {
-	"tailwindCSS.experimental.classRegex": ["class: \"(.*)\""],
-"tailwindCSS.includeLanguages": {
+  "tailwindCSS.experimental.classRegex": ["class: \"(.*)\""],
+  "tailwindCSS.includeLanguages": {
     "rust": "html"
-},
+  },
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   },

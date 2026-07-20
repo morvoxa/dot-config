@@ -15,6 +15,16 @@ require("conform").setup({
 		lua = { "stylua" },
 		rust = { "dioxus", "rustfmt" },
 		toml = { "taplo" },
+		--web
+		javascript = { "prettier" },
+		typescript = { "prettier" },
+		javascriptreact = { "prettier" },
+		typescriptreact = { "prettier" },
+		css = { "prettier" },
+		html = { "prettier" },
+		json = { "prettier" },
+		jsonc = { "prettier" },
+		markdown = { "prettier" },
 	},
 	format_on_save = {
 		timeout_ms = 500,
