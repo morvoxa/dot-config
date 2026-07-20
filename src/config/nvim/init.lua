@@ -8,6 +8,9 @@ vim.pack.add({
 	{ src = "https://github.com/romus204/tree-sitter-manager.nvim" },
 	{ src = "https://github.com/saghen/blink.indent" },
 	{ src = "https://github.com/saghen/blink.cmp", version = "v1.10.2" },
+	{ src = "https://github.com/neovim/nvim-lspconfig" },
+	{ src = "https://github.com/L3MON4D3/LuaSnip" },
+	{ src = "https://github.com/rafamadriz/friendly-snippets" },
 })
 
 require("keymap")
@@ -21,3 +24,16 @@ vim.cmd([[colorscheme catppuccin]])
 vim.lsp.enable("clangd")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("tailwindcss")
+local nextjs_servers = {
+	"vtsls",
+	"eslint",
+	"emmet_ls",
+	"html",
+	"cssls",
+	"jsonls",
+	"yamlls",
+}
+--npm install -g @vtsls/language-server eslint emmet-ls vscode-langservers-extracted yaml-language-server @tailwindcss/language-server
+for _, lsp in ipairs(nextjs_servers) do
+	vim.lsp.enable(lsp)
+end
