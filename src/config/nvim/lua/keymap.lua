@@ -9,20 +9,16 @@ k("n", "<leader>ff", ":FzfLua files<cr>", {})
 
 local function toggle_lsp_features()
 	local current_buf = vim.api.nvim_get_current_buf()
-	local diagnostics_enabled = vim.diagnostic.is_enabled()
-	local inlay_hints_enabled = false
 
-	if vim.lsp.inlay_hint then
-		inlay_hints_enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = current_buf })
-	end
+	local current_config = vim.diagnostic.config()
+	local virtual_text_enabled = current_config and current_config.virtual_text ~= false
 
-	local target_state = not (diagnostics_enabled or inlay_hints_enabled)
+	local target_state = not virtual_text_enabled
 
-	vim.diagnostic.enable(target_state)
-
-	if target_state then
-		vim.diagnostic.config({ virtual_text = true, signs = true })
-	end
+	vim.diagnostic.config({
+		virtual_text = target_state,
+		signs = true,
+	})
 
 	local hint_status = ""
 	if vim.lsp.inlay_hint then
@@ -30,7 +26,7 @@ local function toggle_lsp_features()
 		hint_status = target_state and " & Hints Enabled" or " & Hints Disabled"
 	end
 
-	local msg = target_state and "LSP Features: ENABLED" or "LSP Features: DISABLED"
+	local msg = target_state and "LSP Text: ENABLED" or "LSP Text: DISABLED"
 	vim.notify(msg .. hint_status, vim.log.levels.INFO)
 end
 
