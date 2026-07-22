@@ -3,7 +3,7 @@ vim.g.mapleader = " "
 k("i", "jk", "<Esc>", {})
 k("n", "<leader>w", ":w<cr>", {})
 k("n", "<leader>x", ":bdel<cr>", {})
-k("n", "<leader>e", ":Ex<cr>", {})
+k("n", "<leader>e", ":Oil<cr>", {})
 k("n", "<leader>1", "<C-w>w", {})
 k("n", "<leader>ff", ":FzfLua files<cr>", {})
 
