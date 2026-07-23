@@ -11,12 +11,10 @@ alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
 
 export PATH=~/.cargo/bin:~/.local/bin:$PATH
-# --- AUTO START/ATTACH TMUX (BASH VERSION) ---
-if [[ $- == *i* ]] && command -v tmux &> /dev/null && [ -z "$TMUX" ] && [ -z "$VSCODE_TERM_CONTAINER" ] && [ -z "$VIMRUNTIME" ]; then
+if [[ $- == *i* ]] && command -v tmux &> /dev/null && [ -z "$TMUX" ] && [ -z "$VIMRUNTIME" ] && [ "$TERM_PROGRAM" != "vscode" ]; then
     if tmux has-session 2>/dev/null; then
         exec tmux attach-session
     else
         exec tmux new-session -s main
     fi
 fi
-

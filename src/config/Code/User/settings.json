@@ -11,6 +11,8 @@
       "command": "vscode-neovim.escape"
     }
   },
+
+  "workbench.sideBar.location": "right",
   "window.restoreWindows": "none",
   "workbench.startupEditor": "none",
   "explorer.autoReveal": false,
