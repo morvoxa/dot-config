@@ -4,6 +4,7 @@
     #cli
     neovim
     stylua
+    devenv
     fzf
     nixfmt
     tree-sitter
