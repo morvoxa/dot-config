@@ -49,7 +49,9 @@ else
 		{ src = "https://github.com/neovim/nvim-lspconfig" },
 		{ src = "https://github.com/L3MON4D3/LuaSnip" },
 		{ src = "https://github.com/rafamadriz/friendly-snippets" },
-		{ src = "https://github.com/stevearc/oil.nvim" },
+		{ src = "https://github.com/nvim-neo-tree/neo-tree.nvim" },
+		{ src = "https://github.com/MunifTanjim/nui.nvim" },
+		{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	})
 
 	require("keymap")
