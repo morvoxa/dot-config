@@ -15,6 +15,7 @@ require("conform").setup({
 		lua = { "stylua" },
 		rust = { "dioxus", "rustfmt" },
 		toml = { "taplo" },
+		nix = { "nixfmt" },
 		--web
 		javascript = { "prettier" },
 		typescript = { "prettier" },
