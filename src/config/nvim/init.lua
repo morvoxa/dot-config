@@ -19,11 +19,10 @@ if vim.g.vscode then
 	map("n", "<leader>e", "workbench.view.explorer")
 	map("n", "L", "workbench.action.nextEditor")
 	map("n", "H", "workbench.action.previousEditor")
-	map("n", "<leader>nh", function()
+	vim.keymap.set("n", "<leader>nh", function()
 		vim.cmd.nohlsearch()
-		vscode.action("notifications.clearAll")
+		require("vscode").action("notifications.clearAll")
 	end)
-
 	vim.pack.add({
 		{ src = "https://github.com/folke/flash.nvim" },
 	})

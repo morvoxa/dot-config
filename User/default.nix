@@ -4,6 +4,7 @@
   environment.systemPackages = with pkgs; [
     #cli
     vscode.fhs
+    rustup
     neovim
     stylua
     devenv
@@ -16,6 +17,7 @@
     just
     tree
     wl-clipboard-rs
+    xclip
     git
     #browser
     firefox
