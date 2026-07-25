@@ -5,5 +5,5 @@
     variant: "",
     options: Some("terminate:ctrl_alt_bksp"),
     repeat_delay: 200,
-    repeat_rate: 50,
+    repeat_rate: 35,
 )

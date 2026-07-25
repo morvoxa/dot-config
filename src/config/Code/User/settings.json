@@ -13,6 +13,7 @@
       "command": "vscode-neovim.escape"
     }
   },
+"editor.accessibilitySupport": "off",
   "workbench.sideBar.location": "right",
   "window.restoreWindows": "none",
   "workbench.startupEditor": "none",

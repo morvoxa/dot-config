@@ -1,7 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, nixpkgs, ... }: {
+  nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
     #cli
+    vscode.fhs
     neovim
     stylua
     devenv
