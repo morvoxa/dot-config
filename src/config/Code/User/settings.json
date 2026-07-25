@@ -1,7 +1,5 @@
 {
-  "tailwindCSS.experimental.classRegex": [
-    "class: \"(.*)\""
-  ],
+  "tailwindCSS.experimental.classRegex": ["class: \"(.*)\""],
   "tailwindCSS.includeLanguages": {
     "rust": "html"
   },
@@ -13,7 +11,6 @@
       "command": "vscode-neovim.escape"
     }
   },
-"editor.accessibilitySupport": "off",
   "workbench.sideBar.location": "right",
   "window.restoreWindows": "none",
   "workbench.startupEditor": "none",
@@ -21,9 +18,7 @@
   "editor.lineNumbers": "relative",
   "editor.wordWrap": "on",
   "editor.wordWrapColumn": 80,
-  "editor.rulers": [
-    80
-  ],
+  "editor.rulers": [80],
   "editor.formatOnSave": true,
   "chat.disableAIFeatures": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",

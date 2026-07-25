@@ -9,6 +9,7 @@
     devenv
     fzf
     nixfmt
+    prettier
     tree-sitter
     gcc
     unzip
