@@ -3,7 +3,7 @@
 
   environment.systemPackages = with pkgs; [
     #cli
-    vscode.fhs
+    vscodium
     rustup
     neovim
     stylua
