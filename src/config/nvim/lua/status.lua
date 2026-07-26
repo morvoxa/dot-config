@@ -1,30 +1,32 @@
--- 1. SETUP TEMA CATPPUCCIN ASIMETRISBLOCKS
+-- 1. SETUP TEMA COKELAT HITAM (DARK ESPRESSO / CHARCOAL MOCHA)
 local function setup_statusline_colors()
-	local base_bg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg
-	local bar_bg = base_bg and string.format("#%06x", base_bg) or "#1e1e2e"
+	-- Memaksa background bar utama menggunakan hitam pekat murni
+	local bar_bg = "#111111"
 
-	vim.api.nvim_set_hl(0, "StatusLine", { bg = bar_bg, fg = "#585b70" })
-	vim.api.nvim_set_hl(0, "StatusLineNC", { bg = bar_bg, fg = "#313244" })
+	-- StatusLine bawaan menggunakan warna teks cokelat arang yang sangat samar
+	vim.api.nvim_set_hl(0, "StatusLine", { bg = bar_bg, fg = "#3a302a" })
+	vim.api.nvim_set_hl(0, "StatusLineNC", { bg = bar_bg, fg = "#1c1715" })
 
-	local bg_green = "#a6e3a1"
-	local bg_sapph = "#74c7ec"
-	local bg_peach = "#fab387"
-	local bg_lav = "#b4befe"
-	local bg_dark = "#313244"
+	-- Palet Gelap: Cokelat Tua, Cokelat Tanah, Krem Redup, dan Hitam
+	local bg_dark_choc = "#231b17" -- Cokelat gelap arang (Blok File)
+	local bg_moca_text = "#a88970" -- Cokelat moka pudar (Blok Mode)
+	local bg_umber = "#5e4b3e" -- Cokelat tanah/kayu (Blok LSP)
+	local bg_clay = "#826955" -- Cokelat tanah liat (Blok Formatter)
+	local bg_bone = "#c7b7a7" -- Krem tulang redup (Blok Posisi)
 
-	-- Teks kontras tinggi di atas blok warna
-	vim.api.nvim_set_hl(0, "BlkMode", { fg = "#11111b", bg = bg_green, bold = true })
-	vim.api.nvim_set_hl(0, "BlkFile", { fg = "#cdd6f4", bg = bg_dark })
-	vim.api.nvim_set_hl(0, "BlkLsp", { fg = "#11111b", bg = bg_sapph, bold = true }) -- Blok LSP
-	vim.api.nvim_set_hl(0, "BlkFmt", { fg = "#11111b", bg = bg_peach, bold = true })
-	vim.api.nvim_set_hl(0, "BlkPos", { fg = "#11111b", bg = bg_lav })
+	-- Konfigurasi teks kontras di atas blok bernuansa gelap
+	vim.api.nvim_set_hl(0, "BlkMode", { fg = "#111111", bg = bg_moca_text, bold = true })
+	vim.api.nvim_set_hl(0, "BlkFile", { fg = "#a88970", bg = bg_dark_choc })
+	vim.api.nvim_set_hl(0, "BlkLsp", { fg = "#111111", bg = bg_umber, bold = true })
+	vim.api.nvim_set_hl(0, "BlkFmt", { fg = "#111111", bg = bg_clay, bold = true })
+	vim.api.nvim_set_hl(0, "BlkPos", { fg = "#111111", bg = bg_bone })
 
-	-- Segitiga Transisi
-	vim.api.nvim_set_hl(0, "TransModeToFile", { fg = bg_green, bg = bg_dark })
-	vim.api.nvim_set_hl(0, "TransFileToBar", { fg = bg_dark, bg = bar_bg })
-	vim.api.nvim_set_hl(0, "TransBarToLsp", { fg = bg_sapph, bg = bar_bg })
-	vim.api.nvim_set_hl(0, "TransLspToFmt", { fg = bg_peach, bg = bg_sapph })
-	vim.api.nvim_set_hl(0, "TransFmtToPos", { fg = bg_lav, bg = bg_peach })
+	-- Segitiga Transisi Bergradasi Hitam ke Cokelat
+	vim.api.nvim_set_hl(0, "TransModeToFile", { fg = bg_moca_text, bg = bg_dark_choc })
+	vim.api.nvim_set_hl(0, "TransFileToBar", { fg = bg_dark_choc, bg = bar_bg })
+	vim.api.nvim_set_hl(0, "TransBarToLsp", { fg = bg_umber, bg = bar_bg })
+	vim.api.nvim_set_hl(0, "TransLspToFmt", { fg = bg_clay, bg = bg_umber })
+	vim.api.nvim_set_hl(0, "TransFmtToPos", { fg = bg_bone, bg = bg_clay })
 end
 
 setup_statusline_colors()

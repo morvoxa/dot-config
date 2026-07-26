@@ -60,7 +60,7 @@ else
 	require("plugins.blink")
 	require("plugins.etc")
 
-	vim.cmd([[colorscheme catppuccin]])
+	vim.cmd([[colorscheme slate]])
 
 	vim.lsp.enable("clangd")
 	vim.lsp.enable("lua_ls")
