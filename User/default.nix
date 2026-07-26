@@ -6,6 +6,7 @@
     vscodium
     rustup
     neovim
+    direnv
     stylua
     devenv
     fzf

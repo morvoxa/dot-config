@@ -34,7 +34,7 @@
           modules = [
             ./System/hardware-configuration.nix
             ./System/configuration.nix
-            ./System/cosmic.nix
+            ./System/plasma.nix
             ./User
           ];
         };
