@@ -18,3 +18,14 @@ vim.g.rustaceanvim = {
 }
 require("luasnip.loaders.from_vscode").lazy_load()
 require("neo-tree").setup({})
+vim.g.rustaceanvim = {
+	server = {
+		default_settings = {
+			["rust-analyzer"] = {
+				check = {
+					command = "check",
+				},
+			},
+		},
+	},
+}

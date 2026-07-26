@@ -17,6 +17,7 @@
     git
     fzf
     nixfmt
+    stylua
     tree
     xclip
     alacritty
