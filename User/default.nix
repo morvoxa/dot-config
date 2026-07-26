@@ -1,28 +1,21 @@
-{ pkgs, nixpkgs, ... }: {
-  nixpkgs.config.allowUnfree = true;
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
-  environment.systemPackages = with pkgs; [
-    #cli
-    vscodium
-    rustup
+{
+  home.username = "mor";
+  home.homeDirectory = "/home/mor";
+  home.stateVersion = "26.05";
+  programs.home-manager.enable = true;
+  home.packages = with pkgs; [
+    fastfetch
     neovim
-    direnv
-    stylua
-    devenv
+    git
     fzf
     nixfmt
-    prettier
-    tree-sitter
-    gcc
-    unzip
-    just
     tree
-    wl-clipboard-rs
-    xclip
-    git
-    #browser
-    firefox
-    #terminal
-    alacritty
   ];
 }
