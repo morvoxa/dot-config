@@ -21,6 +21,7 @@
     "flakes"
   ];
   boot.loader.grub.enable = true;
+  boot.kernelParams = [ "video=1920x1080@75" ];
   boot.loader.grub.efiSupport = true;
   # boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
