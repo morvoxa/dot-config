@@ -39,11 +39,24 @@
         };
 
       flake = {
-        homeConfigurations."mor" = inputs.home-manager.lib.homeManagerConfiguration {
-          pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";
-          modules = [
-            ./User
-          ];
+        homeConfigurations = {
+          # Target untuk WSL -> jalankan: home-manager switch --flake .#wsl
+          "wsl" = home-manager.lib.homeManagerConfiguration {
+            pkgs = nixpkgs.legacyPackages.x86_64-linux;
+            extraSpecialArgs = {
+              isWsl = true;
+            }; # <-- Passing flag WSL di sini
+            modules = [ ./User ];
+          };
+
+          # Target untuk Native -> jalankan: home-manager switch --flake .#desktop
+          "desktop" = home-manager.lib.homeManagerConfiguration {
+            pkgs = nixpkgs.legacyPackages.x86_64-linux;
+            extraSpecialArgs = {
+              isWsl = false;
+            }; # <-- Passing flag Non-WSL di sini
+            modules = [ ./User ];
+          };
         };
         nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
           modules = [
