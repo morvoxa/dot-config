@@ -31,6 +31,8 @@
       taplo
       nixfmt
       prettier
+      fd
+      ripgrep
       stylua
       clang-tools
       lua-language-server
@@ -39,6 +41,7 @@
       vscode-langservers-extracted
       emmet-ls
       yaml-language-server
+      just
     ]
     # Gui for Linux
     ++ lib.optionals (!isWsl) [

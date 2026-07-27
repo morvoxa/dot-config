@@ -34,12 +34,6 @@ return {
         jsonc = { "prettier" },
         markdown = { "prettier" },
       },
-
-      -- 3. Setting Format On Save
-      format_on_save = {
-        timeout_ms = 500,
-        lsp_format = "never",
-      },
     },
   },
 }
