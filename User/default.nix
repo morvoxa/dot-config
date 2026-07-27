@@ -26,6 +26,7 @@
       tree
       xclip
       gcc
+      openssh
       #Neovim LSP + Formater
       taplo
       nixfmt
