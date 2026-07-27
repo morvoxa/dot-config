@@ -30,6 +30,7 @@
       #Neovim LSP + Formater
       taplo
       nixfmt
+      prettier
       stylua
       clang-tools
       lua-language-server
