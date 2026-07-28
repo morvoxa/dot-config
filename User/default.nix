@@ -55,28 +55,26 @@
     nix-direnv.enable = true;
   };
 
-  programs.zellij = {
+  programs.tmux = {
     enable = true;
-    settings = {
-      keybinds = {
-        unbind = [
-          "Ctrl h"
-          "Ctrl l"
-        ];
-      };
-    };
+    extraConfig = ''
+      bind-key -n M-h previous-window
+      bind-key -n M-l next-window
+    '';
   };
 
   programs.bash = {
     enable = true;
     initExtra = ''
+      if [[ -z "$TMUX" && $- == *i* ]]; then
+        if command -v tmux &> /dev/null; then
+          tmux attach-session -t default 2>/dev/null || tmux new-session -s default
+          exit
+        fi
+      fi
+
       eval "$(direnv hook bash)"
       alias ls="ls --color=auto"
-      if [[ -z "$ZELLIJ" && $- == *i* ]]; then
-      if command -v zellij &> /dev/null; then
-      exec zellij attach -c
-      fi
-      fi
     '';
   };
 }
