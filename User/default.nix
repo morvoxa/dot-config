@@ -18,12 +18,12 @@
       # CLI Tools ()
       git
       devenv
-      tmux
       fastfetch
       neovim
       fzf
       tree-sitter
       tree
+      nixd
       xclip
       gcc
       openssh
@@ -55,11 +55,28 @@
     nix-direnv.enable = true;
   };
 
+  programs.zellij = {
+    enable = true;
+    settings = {
+      keybinds = {
+        unbind = [
+          "Ctrl h"
+          "Ctrl l"
+        ];
+      };
+    };
+  };
+
   programs.bash = {
     enable = true;
     initExtra = ''
       eval "$(direnv hook bash)"
       alias ls="ls --color=auto"
+      if [[ -z "$ZELLIJ" && $- == *i* ]]; then
+      if command -v zellij &> /dev/null; then
+      exec zellij attach -c
+      fi
+      fi
     '';
   };
 }
