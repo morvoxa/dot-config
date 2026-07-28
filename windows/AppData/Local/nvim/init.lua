@@ -1,45 +1,80 @@
 if vim.g.vscode then
-	local o = vim.opt
-	o.clipboard = "unnamedplus"
-	o.ignorecase = true
-	o.smartcase = true
-	o.incsearch = true
-	vim.g.mapleader = " "
+  vim.o.relativenumber = true
+  vim.o.number = true
+  vim.o.clipboard = "unnamedplus"
+  vim.o.ignorecase = true
+  vim.o.smartcase = true
+  vim.o.hlsearch = true
+  vim.o.incsearch = true
+  vim.o.scrolloff = 8
+  vim.o.sidescrolloff = 8
+  vim.o.whichwrap = "b,s,<,>,[,],h,l"
+  vim.o.autoindent = true
+  vim.o.smartindent = true
+  vim.o.timeoutlen = 300
+  vim.o.laststatus = 0
 
-	local vscode = require("vscode")
-	vim.notify = vscode.notify
-	local function vscode_map(mode, shortcut, vscode_command)
-		vim.keymap.set(mode, shortcut, function()
-			vscode.action(vscode_command)
-		end, { silent = true })
-	end
+  local vscode = require("vscode")
+  vim.g.mapleader = " "
+  vim.keymap.set("n", "<leader>ff", function()
+    vscode.action("workbench.action.quickOpen")
+  end, { desc = "Find Files" })
 
-	vscode_map("n", "<leader>w", "workbench.action.files.save")
-	vscode_map("n", "<leader>c", "workbench.action.terminal.toggleTerminal")
-	vscode_map("n", "<leader>x", "workbench.action.closeActiveEditor")
-	vscode_map("n", "<leader>p", "workbench.action.showCommands")
-	vscode_map("n", "<leader>e", "workbench.view.explorer")
-	vscode_map("n", "L", "workbench.action.nextEditor")
-	vscode_map("n", "H", "workbench.action.previousEditor")
-	vim.keymap.set("n", "<leader>nh", function()
-		vim.cmd("nohlsearch")
-		vscode.action("notifications.clearAll")
-	end, { silent = true })
+  vim.keymap.set("n", "<leader>p", function()
+    vscode.action("workbench.action.showCommands")
+  end, { desc = "Command Palette" })
 
-	vim.pack.add({ { src = "https://github.com/folke/flash.nvim" } })
-	require("flash").setup({})
-	local flash = require("flash")
-	local flash_maps = {
-		[{ "n", "x", "o" }] = { { "s", flash.jump, "Flash" }, { "S", flash.treesitter, "Flash Treesitter" } },
-		[{ "x", "o" }] = { { "R", flash.treesitter_search, "Treesitter Search" } },
-		[{ "o" }] = { { "r", flash.remote, "Remote Flash" } },
-		[{ "c" }] = { { "<c-s>", flash.toggle, "Toggle Flash Search" } },
-	}
+  vim.keymap.set("n", "<leader>t", function()
+    vscode.action("workbench.action.terminal.toggleTerminal")
+  end, { desc = "Toggle Terminal" })
 
-	for modes, maps in pairs(flash_maps) do
-		for _, map in ipairs(maps) do
-			vim.keymap.set(modes, map[1], map[2], { desc = map[3] })
-		end
-	end
+  vim.keymap.set("n", "<leader>e", function()
+    vscode.action("workbench.view.explorer")
+  end, { desc = "Focus File Explorer" })
+
+  vim.keymap.set("n", "<leader>c", function()
+    vscode.action("workbench.action.closeActiveEditor")
+  end, { desc = "Close File" })
+
+  vim.keymap.set("n", "H", function()
+    vscode.action("workbench.action.previousEditor")
+  end, { desc = "Prev File" })
+
+  vim.keymap.set("n", "L", function()
+    vscode.action("workbench.action.nextEditor")
+  end, { desc = "Next File" })
+
+  vim.keymap.set("n", "<leader>nh", function()
+    vim.cmd("noh")
+    vscode.action("notifications.clearAll")
+    vscode.action("notifications.hideList")
+  end, { desc = "No Highlight & Clear Notifications" })
+  vim.pack.add({
+    { src = "https://github.com/folke/flash.nvim" },
+  })
+
+  local map = function(mode, lhs, rhs, desc)
+    vim.keymap.set(mode, lhs, rhs, { desc = desc, silent = true, remap = false })
+  end
+
+  map({ "n", "x", "o" }, "s", function()
+    require("flash").jump()
+  end, "Flash")
+
+  map({ "n", "x", "o" }, "S", function()
+    require("flash").treesitter()
+  end, "Flash Treesitter")
+
+  map("o", "r", function()
+    require("flash").remote()
+  end, "Remote Flash")
+
+  map({ "o", "x" }, "R", function()
+    require("flash").treesitter_search()
+  end, "Treesitter Search")
+
+  map("c", "<c-s>", function()
+    require("flash").toggle()
+  end, "Toggle Flash Search")
 else
 end
