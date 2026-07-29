@@ -27,6 +27,7 @@ tooltip label {
 
 /* 2. GAYA KAPSUL UNTUK SETIAP MODUL (DARK ACRYLIC) */
 #workspaces,
+#custom-nixos,
 #clock,
 #network,
 #wireplumber,
@@ -49,6 +50,18 @@ tooltip label {
 #workspaces {
   margin-left: 6px;
   padding: 2px 8px;
+}
+#custom-nixos {
+  margin-left: 6px;
+  padding: 2px 10px;
+  color: #7ebae4; /* Warna khas biru muda NixOS (opsional, bisa diganti #ffffff kalau mau full monokrom) */
+  font-size: 16px; /* Dibuat sedikit lebih besar agar tegas ala logo Apple */
+  transition: all 0.2s ease-in-out;
+}
+
+#custom-nixos:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 #workspaces button {

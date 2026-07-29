@@ -4,7 +4,7 @@
   "height": 24,
   "spacing": 4,
 
-  "modules-left": ["hyprland/workspaces"],
+  "modules-left": ["custom/nixos", "hyprland/workspaces"],
   "modules-center": ["clock"],
   "modules-right": ["network", "wireplumber", "tray", "custom/power"],
 
@@ -29,6 +29,11 @@
     "format-disconnected": "󰤭  Offline",
     "tooltip-format": "{ifname} via {gwaddr}",
     "max-length": 20,
+  },
+  "custom/nixos": {
+    "format": " " /* Icon NixOS dari Nerd Fonts */,
+    "tooltip": false,
+    "on-click": "hyprlauncher" /* Atau runner lain seperti wofi / tofi / fuzzel */,
   },
 
   "wireplumber": {
