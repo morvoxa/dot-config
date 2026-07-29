@@ -4,30 +4,25 @@
   "height": 24,
   "spacing": 4,
 
-  // Susunan Modul
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["clock"],
-  "modules-right": ["network", "wireplumber", "tray"],
+  "modules-right": ["network", "wireplumber", "tray", "custom/power"],
 
-  // 1. Workspaces (Simple)
   "hyprland/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
     "format": "{name}",
-    // Menampilkan workspace 1 sampai 5 secara permanen di semua monitor
     "persistent-workspaces": {
       "*": [1, 2, 3, 4, 5],
     },
   },
 
-  // 2. Jam & Tanggal
   "clock": {
     "format": "{:%H:%M}",
     "format-alt": "{:%A, %d %B %Y}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
   },
 
-  // 3. Wi-Fi
   "network": {
     "format-wifi": "󰤨  {essid}",
     "format-ethernet": "󰈀  {ipaddr}",
@@ -36,16 +31,35 @@
     "max-length": 20,
   },
 
-  // 4. Volume (Wireplumber / PipeWire)
   "wireplumber": {
-    "format": "{icon}  {volume}%",
-    "format-muted": "󰝟  Muted",
-    "format-icons": ["󰕿", "󰖀", "󰕾"],
+    "format": "{icon} {volume}%",
+    "format-muted": "󰝟 Muted",
+    "format-icons": [
+      "󰕿 ──────────",
+      "󰕿 ━─────────",
+      "󰖀 ━━────────",
+      "󰖀 ━━━───────",
+      "󰖀 ━━━━──────",
+      "󰖀 ━━━━━─────",
+      "󰕾 ━━━━━━────",
+      "󰕾 ━━━━━━━───",
+      "󰕾 ━━━━━━━━──",
+      "󰕾 ━━━━━━━━━─",
+      "󰕾 ━━━━━━━━━━",
+    ],
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 2%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-",
   },
 
-  // 5. Systray
   "tray": {
     "icon-size": 14,
     "spacing": 10,
+  },
+  "custom/power": {
+    "format": "",
+    "tooltip": false,
+    // Perintah saat diklik (pilih salah satu sesuai kebutuhanmu):
+    "on-click": "wlogout", // Jika kamu menginstall menu GUI wlogout
   },
 }

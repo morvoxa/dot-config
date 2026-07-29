@@ -12,5 +12,6 @@
     kitty
     hyprlauncher
     waybar
+    wlogout
   ];
 }

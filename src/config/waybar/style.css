@@ -13,23 +13,27 @@ window#waybar {
   border-bottom: 1px solid #333333;
 }
 
-/* Kategori Modul Umums */
-#workspaces,
+/* Kategori Modul Umum */
 #clock,
 #network,
 #wireplumber,
-#tray {
+#tray,
+#custom-power {
   padding: 0px 10px;
 }
 
-/* Workspaces (Garis & Persegi Panjang Minimalis) */
+/* 1. KOREKSI WORKSPACES AGAR RETA KIRI/SIMETRIS */
+#workspaces {
+  padding: 0; /* Menghapus padding luar agar tidak menumpuk margin */
+  margin-left: 6px; /* Menyelaraskan jarak kiri dengan tombol power di kanan */
+}
+
 #workspaces button {
   padding: 0;
-  margin: 0 4px;
-  color: transparent; /* Menyembunyikan teks/angka bawaan */
-  background-color: #555555; /* Warna garis saat TIDAK AKTIF */
+  margin: 0 4px; /* Jarak antar-tombol workspace */
+  color: transparent;
+  background-color: #555555;
 
-  /* Bentuk Garis saat Tidak Aktif */
   min-width: 12px;
   min-height: 3px;
   border-radius: 2px;
@@ -43,12 +47,11 @@ window#waybar {
 
 /* Bentuk Persegi Panjang saat AKTIF */
 #workspaces button.active {
-  background-color: #ffffff; /* Warna putih terang */
-  min-width: 28px; /* Melebar menjadi persegi panjang */
+  background-color: #ffffff;
+  min-width: 28px;
   min-height: 4px;
 }
 
-/* Jika ada workspace URGENT (Notifikasi) */
 #workspaces button.urgent {
   background-color: #ffffff;
   min-width: 28px;
@@ -67,7 +70,8 @@ window#waybar {
 }
 
 #wireplumber.muted {
-  color: #666666;
+  color: #444444;
+  background-color: transparent;
 }
 
 #network.disconnected {
@@ -76,5 +80,17 @@ window#waybar {
 
 /* Systray */
 #tray {
-  padding-right: 12px;
+  padding-right: 8px;
+}
+
+/* 2. KOREKSI TOMBOL POWER AGAR PAS DI UJUNG KANAN */
+#custom-power {
+  padding: 0px 10px;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+#custom-power:hover {
+  color: #ff5555;
+  background-color: #222222;
 }
