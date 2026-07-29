@@ -1,0 +1,80 @@
+/* Gaya Dasar Monokrom (Hitam Putih) */
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrains Mono", "Nerd Font", monospace;
+  font-size: 13px;
+  min-height: 0;
+}
+
+window#waybar {
+  background-color: #000000;
+  color: #ffffff;
+  border-bottom: 1px solid #333333;
+}
+
+/* Kategori Modul Umums */
+#workspaces,
+#clock,
+#network,
+#wireplumber,
+#tray {
+  padding: 0px 10px;
+}
+
+/* Workspaces (Garis & Persegi Panjang Minimalis) */
+#workspaces button {
+  padding: 0;
+  margin: 0 4px;
+  color: transparent; /* Menyembunyikan teks/angka bawaan */
+  background-color: #555555; /* Warna garis saat TIDAK AKTIF */
+
+  /* Bentuk Garis saat Tidak Aktif */
+  min-width: 12px;
+  min-height: 3px;
+  border-radius: 2px;
+
+  transition: all 0.2s ease-in-out;
+}
+
+#workspaces button:hover {
+  background-color: #888888;
+}
+
+/* Bentuk Persegi Panjang saat AKTIF */
+#workspaces button.active {
+  background-color: #ffffff; /* Warna putih terang */
+  min-width: 28px; /* Melebar menjadi persegi panjang */
+  min-height: 4px;
+}
+
+/* Jika ada workspace URGENT (Notifikasi) */
+#workspaces button.urgent {
+  background-color: #ffffff;
+  min-width: 28px;
+}
+
+/* Jam (Pusat) */
+#clock {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* Status Wi-Fi & Volume */
+#network,
+#wireplumber {
+  color: #dddddd;
+}
+
+#wireplumber.muted {
+  color: #666666;
+}
+
+#network.disconnected {
+  color: #666666;
+}
+
+/* Systray */
+#tray {
+  padding-right: 12px;
+}

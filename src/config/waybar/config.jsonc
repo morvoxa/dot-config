@@ -1,0 +1,51 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 24,
+  "spacing": 4,
+
+  // Susunan Modul
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["network", "wireplumber", "tray"],
+
+  // 1. Workspaces (Simple)
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{name}",
+    // Menampilkan workspace 1 sampai 5 secara permanen di semua monitor
+    "persistent-workspaces": {
+      "*": [1, 2, 3, 4, 5],
+    },
+  },
+
+  // 2. Jam & Tanggal
+  "clock": {
+    "format": "{:%H:%M}",
+    "format-alt": "{:%A, %d %B %Y}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+  },
+
+  // 3. Wi-Fi
+  "network": {
+    "format-wifi": "󰤨  {essid}",
+    "format-ethernet": "󰈀  {ipaddr}",
+    "format-disconnected": "󰤭  Offline",
+    "tooltip-format": "{ifname} via {gwaddr}",
+    "max-length": 20,
+  },
+
+  // 4. Volume (Wireplumber / PipeWire)
+  "wireplumber": {
+    "format": "{icon}  {volume}%",
+    "format-muted": "󰝟  Muted",
+    "format-icons": ["󰕿", "󰖀", "󰕾"],
+  },
+
+  // 5. Systray
+  "tray": {
+    "icon-size": 14,
+    "spacing": 10,
+  },
+}

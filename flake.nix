@@ -62,7 +62,7 @@
           modules = [
             ./System/hardware-configuration.nix
             ./System/configuration.nix
-            ./System/xfce.nix
+            ./System/hyprland.nix
           ];
         };
 
