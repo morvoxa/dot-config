@@ -2,3 +2,10 @@
 size = 10
 [font.normal]
 family = "JetBrainsMono Nerd Font"
+# 2. Nol-kan padding bawah Alacritty
+[window.padding]
+x = 0
+y = 0
+[font.offset]
+x = 0
+y = -2
