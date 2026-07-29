@@ -47,6 +47,7 @@ local menu = "hyprlauncher"
 -- Or execute your favorite apps at launch like this:
 --
 hl.on("hyprland.start", function()
+	hl.exec_cmd("hyprctl eval 'layerrule = blur, waybar'")
 	hl.exec_cmd("uwsm app -- waybar")
 end)
 
@@ -87,7 +88,7 @@ hl.config({
 		gaps_in = 0,
 		gaps_out = 0,
 
-		border_size = 0,
+		border_size = 1,
 
 		col = {
 			active_border = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
@@ -104,7 +105,7 @@ hl.config({
 	},
 
 	decoration = {
-		rounding = 0,
+		rounding = 6,
 		rounding_power = 2,
 
 		-- Change transparency of focused and unfocused windows
@@ -120,9 +121,11 @@ hl.config({
 
 		blur = {
 			enabled = true,
-			size = 3,
-			passes = 1,
-			vibrancy = 0.1696,
+			size = 10, -- Meningkatkan sebaran blur agar lebih lembut
+			passes = 4, -- WAJIB: Menaikkan passes agar blurnya tebal & mulus (Acrylic)
+			new_optimizations = true,
+			vibrancy = 0.25, -- Memberikan efek warna background sedikit menonjol
+			vibrancy_darkness = 0.1, -- Sedikit menggelapkan area vibrancy
 		},
 	},
 
