@@ -20,6 +20,10 @@
     "nix-command"
     "flakes"
   ];
+  nix.settings.trusted-users = [
+    "root"
+    "mor"
+  ];
   boot.loader.grub.enable = true;
   boot.kernelParams = [ "video=1920x1080@75" ];
   boot.loader.grub.efiSupport = true;
