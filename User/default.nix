@@ -3,6 +3,7 @@
   pkgs,
   lib,
   isWsl ? false,
+  nixpkgs,
   ...
 }:
 {
@@ -11,7 +12,7 @@
   home.stateVersion = "26.05";
 
   programs.home-manager.enable = true;
-
+  nixpkgs.config.allowUnfree = true;
   home.packages =
     with pkgs;
     [
@@ -48,7 +49,7 @@
     ++ lib.optionals (!isWsl) [
       firefox
       alacritty
-      vscodium
+      vscode.fhs
     ];
 
   programs.direnv = {
@@ -67,13 +68,6 @@
   programs.bash = {
     enable = true;
     initExtra = ''
-      if [[ -z "$TMUX" && $- == *i* ]]; then
-        if command -v tmux &> /dev/null; then
-          tmux attach-session -t default 2>/dev/null || tmux new-session -s default
-          exit
-        fi
-      fi
-
       eval "$(direnv hook bash)"
       alias ls="ls --color=auto"
     '';
