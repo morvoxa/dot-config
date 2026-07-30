@@ -6,6 +6,7 @@ return {
         -- LSP Standar
         clangd = {},
         lua_ls = {},
+        slint_lsp = {},
         tailwindcss = {},
         vtsls = {},
         eslint = {},
