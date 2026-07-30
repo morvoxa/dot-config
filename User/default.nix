@@ -26,7 +26,6 @@
       tree
       nixd
       xclip
-      wl-clipboard-rs
       gcc
       openssh
       #Neovim LSP + Formater

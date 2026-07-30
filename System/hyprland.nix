@@ -2,8 +2,15 @@
 
   programs.hyprland = {
     enable = true;
-    withUWSM = true; # recommended for most users
-    xwayland.enable = true; # Xwayland can be disabled.
+    withUWSM = true;
+    xwayland.enable = true;
+  };
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal-gtk
+    ];
   };
 
   services.displayManager.ly.enable = true;
@@ -13,5 +20,8 @@
     hyprlauncher
     waybar
     wlogout
+    libnotify
+    mako
+    wl-clipboard-rs
   ];
 }

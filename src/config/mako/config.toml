@@ -1,0 +1,34 @@
+# --- Format & Posisi ---
+font=Sans 10
+anchor=top-right
+layer=overlay
+
+# --- Ukuran & Bentuk Kapsul ---
+width=320
+height=90
+margin=16
+padding=14,20
+
+# Kunci Kapsul: Border radius setengah/besar dari tinggi kotak
+border-radius=25
+border-size=2
+
+# --- Warna Gelembung Pesan (Kaca Transparan & Aksentuasi) ---
+# Format #RRGGBBAA (dua digit terakhir = tingkat transparansi)
+background-color=#1a1b26e6
+border-color=#7aa2f7
+text-color=#c0caf5
+
+# --- Aksesori Gelembung Pesan ---
+# Memberikan garis indikator di dalam kapsul mirip gelembung chat
+progress-color=over #7aa2f7
+
+# Waktu notifikasi melayang (dalam milidetik)
+default-timeout=5000
+
+# --- Gelembung Kritis / Peringatan ---
+[urgency=critical]
+background-color=#24141ee6
+border-color=#f7768e
+text-color=#f7768e
+default-timeout=0

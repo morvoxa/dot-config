@@ -5,7 +5,7 @@
   "spacing": 4,
 
   "modules-left": ["custom/nixos", "hyprland/workspaces"],
-  "modules-center": ["clock"],
+  "modules-center": ["clock", "custom/notification"],
   "modules-right": ["network", "wireplumber", "tray", "custom/power"],
 
   "hyprland/workspaces": {
@@ -66,5 +66,14 @@
     "tooltip": false,
     // Perintah saat diklik (pilih salah satu sesuai kebutuhanmu):
     "on-click": "wlogout", // Jika kamu menginstall menu GUI wlogout
+  },
+  "custom/notification": {
+    "tooltip": true,
+    "format": "<b>{}</b>",
+    "interval": "once",
+    "return-type": "json",
+    "exec": "echo '{\"text\":\"󰂚\", \"tooltip\":\"Klik Kiri: Panggil Notifikasi Terakhir\\nKlik Kanan: Hapus Semua Notifikasi\"}'",
+    "on-click": "makoctl restore",
+    "on-click-right": "makoctl dismiss -a",
   },
 }

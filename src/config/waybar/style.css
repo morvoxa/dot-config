@@ -130,3 +130,18 @@ tooltip label {
   color: #ff5555;
   background-color: rgba(255, 255, 255, 0.15);
 }
+#custom-notification {
+  background-color: #1a1b26; /* Sesuaikan dengan warna background waybar */
+  color: #7aa2f7; /* Warna ikon lonceng */
+  padding: 0 12px;
+  margin: 4px 0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Efek saat kursor mouse di atas ikon */
+#custom-notification:hover {
+  background-color: #24283b;
+  color: #bb9af7;
+}

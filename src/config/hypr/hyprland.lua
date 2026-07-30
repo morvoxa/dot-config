@@ -49,6 +49,7 @@ local menu = "hyprlauncher"
 hl.on("hyprland.start", function()
 	hl.exec_cmd("hyprctl eval 'layerrule = blur, waybar'")
 	hl.exec_cmd("uwsm app -- waybar")
+	hl.exec_cmd("uwsm app -- mako")
 end)
 
 -------------------------------
