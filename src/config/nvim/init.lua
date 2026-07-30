@@ -20,11 +20,10 @@ if vim.g.vscode then
     vscode.action("workbench.action.quickOpen")
   end, { desc = "Find Files" })
 
-	vim.keymap.set("n", "<leader>w", function()
-		vscode.action("workbench.action.files.save")
-		vscode.notify("File saved successfully!")
-	end, { desc = "Save File with Notification" })
-
+  vim.keymap.set("n", "<leader>w", function()
+    vscode.action("workbench.action.files.save")
+    vscode.notify("File saved successfully!")
+  end, { desc = "Save File with Notification" })
 
   vim.keymap.set("n", "<leader>p", function()
     vscode.action("workbench.action.showCommands")
