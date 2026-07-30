@@ -5,8 +5,14 @@
   "spacing": 4,
 
   "modules-left": ["custom/nixos", "hyprland/workspaces"],
-  "modules-center": ["clock", "custom/notification"],
-  "modules-right": ["network", "wireplumber", "tray", "custom/power"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "network",
+    "custom/notification",
+    "wireplumber",
+    "tray",
+    "custom/power",
+  ],
 
   "hyprland/workspaces": {
     "disable-scroll": true,
