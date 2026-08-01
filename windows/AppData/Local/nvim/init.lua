@@ -11,7 +11,6 @@ if vim.g.vscode then
 	vim.o.whichwrap = "b,s,<,>,[,],h,l"
 	vim.o.autoindent = true
 	vim.o.smartindent = true
-	vim.o.timeoutlen = 300
 	vim.o.laststatus = 0
 
 	local vscode = require("vscode")
@@ -89,6 +88,7 @@ else
 		{ src = "https://github.com/folke/flash.nvim" },
 		{ src = "https://github.com/stevearc/conform.nvim" },
 		{ src = "https://github.com/mrcjkb/rustaceanvim" },
+		{ src = "https://github.com/saghen/blink.cmp",     version = "v1.10.2" },
 	})
 	require("conform").setup({
 		formatters_by_ft = {
@@ -102,6 +102,9 @@ else
 	}
 	--lsp
 	vim.lsp.enable("lua_ls")
+	vim.lsp.enable("taplo")
+	vim.lsp.enable("slint_lsp")
+	vim.lsp.enable("clangd")
 	vim.o.relativenumber = true
 	vim.o.number = true
 	vim.o.clipboard = "unnamedplus"
@@ -114,15 +117,15 @@ else
 	vim.o.whichwrap = "b,s,<,>,[,],h,l"
 	vim.o.autoindent = true
 	vim.o.smartindent = true
-	vim.o.timeoutlen = 300
 	vim.o.laststatus = 0
 	vim.o.tabstop = 2
 	vim.o.shiftwidth = 4
+
 	require("mini.basics").setup {}
 	require("mini.pairs").setup {}
-	require("mini.completion").setup {}
 	require("mini.snippets").setup {}
 	require("mini.pick").setup {}
+	require("blink.cmp").setup {}
 
 	vim.api.nvim_set_keymap("n", "<leader>ff", ":Pick files<cr>", { desc = "pick files" })
 	vim.api.nvim_set_keymap("n", "<leader>w", ":w<cr>", { desc = "write" })
@@ -146,4 +149,33 @@ else
 	map("o", "r", "<cmd>lua require('flash').remote()<cr>", "Remote Flash")
 	map({ "o", "x" }, "R", "<cmd>lua require('flash').treesitter_search()<cr>", "Treesitter Search")
 	map("c", "<c-s>", "<cmd>lua require('flash').toggle()<cr>", "Toggle Flash Search")
+	vim.keymap.set("n", "<leader>hh", function()
+		local bufnr = 0
+		local hints_enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
+		vim.lsp.inlay_hint.enable(not hints_enabled, { bufnr = bufnr })
+		vim.diagnostic.config({
+			virtual_text = not hints_enabled,
+		})
+		if not hints_enabled then
+			print("Inlay Hints & Diagnostics Text: ON")
+		else
+			print("Inlay Hints & Diagnostics Text: OFF")
+		end
+	end, { desc = "Toggle Inlay Hints & Error Text" })
+
+	vim.g.rustaceanvim = {
+		server = {
+			default_settings = {
+				["rust-analyzer"] = {
+					check = {
+						command = "clippy",
+						extraArgs = { "--no-deps" },
+					},
+					lru = {
+						capacity = 512,
+					},
+				},
+			},
+		},
+	}
 end
