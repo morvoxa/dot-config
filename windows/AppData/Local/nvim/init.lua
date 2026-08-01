@@ -82,4 +82,68 @@ if vim.g.vscode then
 		require("flash").toggle()
 	end, "Toggle Flash Search")
 else
+	vim.pack.add({
+		{ src = "https://github.com/nvim-mini/mini.nvim" },
+		{ src = "https://github.com/neovim/nvim-lspconfig" },
+		{ src = "https://github.com/j-hui/fidget.nvim" },
+		{ src = "https://github.com/folke/flash.nvim" },
+		{ src = "https://github.com/stevearc/conform.nvim" },
+		{ src = "https://github.com/mrcjkb/rustaceanvim" },
+	})
+	require("conform").setup({
+		formatters_by_ft = {
+		},
+		format_on_save = {
+			timeout_ms = 500,
+			lsp_fallback = true,
+		},
+	})
+	require("fidget").setup {
+	}
+	--lsp
+	vim.lsp.enable("lua_ls")
+	vim.o.relativenumber = true
+	vim.o.number = true
+	vim.o.clipboard = "unnamedplus"
+	vim.o.ignorecase = true
+	vim.o.smartcase = true
+	vim.o.hlsearch = true
+	vim.o.incsearch = true
+	vim.o.scrolloff = 8
+	vim.o.sidescrolloff = 8
+	vim.o.whichwrap = "b,s,<,>,[,],h,l"
+	vim.o.autoindent = true
+	vim.o.smartindent = true
+	vim.o.timeoutlen = 300
+	vim.o.laststatus = 0
+	vim.o.tabstop = 2
+	vim.o.shiftwidth = 4
+	require("mini.basics").setup {}
+	require("mini.pairs").setup {}
+	require("mini.completion").setup {}
+	require("mini.snippets").setup {}
+	require("mini.pick").setup {}
+
+	vim.api.nvim_set_keymap("n", "<leader>ff", ":Pick files<cr>", { desc = "pick files" })
+	vim.api.nvim_set_keymap("n", "<leader>w", ":w<cr>", { desc = "write" })
+	vim.api.nvim_set_keymap("n", "<leader>c", ":bdel<cr>", { desc = "close buf" })
+	vim.api.nvim_set_keymap("n", "<leader>1", "<C-w>w", { desc = "close buf" })
+	vim.api.nvim_set_keymap("i", "jk", "<Esc>", { desc = "normal" })
+
+	local opts = { noremap = true, silent = true }
+	local function map(mode, lhs, rhs, desc)
+		local options = vim.tbl_extend("force", opts, { desc = desc })
+		if type(mode) == "table" then
+			for _, m in ipairs(mode) do
+				vim.api.nvim_set_keymap(m, lhs, rhs, options)
+			end
+		else
+			vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+		end
+	end
+	map({ "n", "x", "o" }, "s", "<cmd>lua require('flash').jump()<cr>", "Flash")
+	map({ "n", "x", "o" }, "S", "<cmd>lua require('flash').treesitter()<cr>", "Flash Treesitter")
+	map("o", "r", "<cmd>lua require('flash').remote()<cr>", "Remote Flash")
+	map({ "o", "x" }, "R", "<cmd>lua require('flash').treesitter_search()<cr>", "Treesitter Search")
+	map("c", "<c-s>", "<cmd>lua require('flash').toggle()<cr>", "Toggle Flash Search")
 end

@@ -1,4 +1,8 @@
 {
+  "editor.fontFamily": "'JetBrainsMono Nerd Font',Consolas, monospace",
+  "editor.fontSize": 14,
+  "editor.fontLigatures": true,
+  "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font', monospace",
   "tailwindCSS.experimental.classRegex": ["class: \"(.*)\""],
   "tailwindCSS.includeLanguages": {
     "rust": "html"
@@ -22,6 +26,8 @@
   "editor.formatOnSave": true,
   "chat.disableAIFeatures": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "rust-analyzer.cargo.targetDir": true,
+  "rust-analyzer.check.command": "clippy",
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer"
   },
