@@ -15,9 +15,7 @@ return {
         cssls = {},
         jsonls = {},
         yamlls = {},
-        nixd = {
-          cmd = { "devenv", "lsp" },
-        },
+        nixd = {},
       },
     },
   },

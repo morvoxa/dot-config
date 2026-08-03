@@ -28,21 +28,23 @@
       xclip
       gcc
       openssh
+      just
+      fd
+      ripgrep
       #Neovim LSP + Formater
       taplo
       nixfmt
       prettier
-      fd
-      ripgrep
+      shfmt
       stylua
       clang-tools
       lua-language-server
+      nixd
       tailwindcss-language-server
       vtsls
       vscode-langservers-extracted
       emmet-ls
       yaml-language-server
-      just
     ]
     # Gui for Linux
     ++ lib.optionals (!isWsl) [
