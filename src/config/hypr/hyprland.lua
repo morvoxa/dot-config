@@ -383,3 +383,8 @@ hl.window_rule({
 	float = true,
 	size = "1000 700", -- Ukuran standar jendela macOS yang seimbang
 })
+hl.window_rule({
+	match = { class = "firefox" },
+	float = true,
+	size = "1200 800", -- Ukuran standar jendela macOS yang seimbang
+})
