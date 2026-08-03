@@ -63,6 +63,10 @@
       bind-key -n M-l next-window
     '';
   };
+  programs.starship = {
+    enable = true;
+    enableBashIntegration = true;
+  };
 
   programs.bash = {
     enable = true;
