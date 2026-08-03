@@ -27,8 +27,13 @@
     alacritty
     gnome-themes-extra
     glib
+    kdePackages.dolphin
+    kdePackages.kio-extras
+    kdePackages.kio-fuse
   ];
+  services.gvfs.enable = true;
   programs.dconf.enable = true;
+  services.udev.enable = true;
 
   programs.dconf.profiles.user.databases = [
     {
