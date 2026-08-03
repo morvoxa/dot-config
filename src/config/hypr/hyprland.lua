@@ -383,6 +383,5 @@ hl.window_rule({
 hl.window_rule({
 	match = { class = ".*" },
 	float = true,
-	size = "900 650", -- Ukuran standar jendela macOS yang seimbang
-	move = "50% 40%",
+	size = "900 600", -- Ukuran standar jendela macOS yang seimbang
 })
