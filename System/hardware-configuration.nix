@@ -18,21 +18,21 @@
     "ehci_pci"
     "ahci"
     "nvme"
-    "usb_storage"
     "usbhid"
+    "usb_storage"
     "sd_mod"
   ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/0ee13fe3-fc47-401f-9564-440a00ca68fb";
-    fsType = "ext4";
+    device = "/dev/disk/by-uuid/143151e8-ccdb-4524-9a89-a912ff16fb09";
+    fsType = "f2fs";
   };
 
   fileSystems."/boot/efi" = {
-    device = "/dev/disk/by-uuid/DC21-F764";
+    device = "/dev/disk/by-uuid/10F8-EEA1";
     fsType = "vfat";
     options = [
       "fmask=0022"

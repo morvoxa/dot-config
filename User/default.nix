@@ -37,20 +37,11 @@
       prettier
       shfmt
       stylua
-      clang-tools
       lua-language-server
       nixd
-      tailwindcss-language-server
-      vtsls
-      vscode-langservers-extracted
-      emmet-ls
-      yaml-language-server
     ]
     # Gui for Linux
     ++ lib.optionals (!isWsl) [
-      firefox
-      alacritty
-      vscode.fhs
     ];
 
   programs.direnv = {
