@@ -55,7 +55,7 @@
           modules = [
             ./System/hardware-configuration.nix
             ./System/configuration.nix
-            ./System/hyprland.nix
+            ./System/xfce.nix
           ];
         };
 

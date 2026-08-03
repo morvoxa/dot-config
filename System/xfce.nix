@@ -5,6 +5,7 @@
 
   environment.systemPackages = with pkgs; [
     xclip
+    firefox
   ];
   services.gvfs.enable = true;
   services.udev.enable = true;
