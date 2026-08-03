@@ -25,7 +25,6 @@
       tree-sitter
       tree
       nixd
-      xclip
       gcc
       openssh
       just
