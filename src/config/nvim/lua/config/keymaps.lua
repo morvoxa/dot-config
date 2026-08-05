@@ -1,7 +1,6 @@
 local map = vim.keymap.set
 map("i", "jk", "<Esc>", { desc = "Exit Insert Mode" })
 map("n", "<leader>w", ":w<cr>", { desc = "Save File" })
-map("n", "<leader>c", ":bdel<cr>", { desc = "Delete Buffer" })
 map("n", "<leader>1", "<C-w>w", { desc = "Switch Window" })
 
 local function toggle_lsp_features()
