@@ -35,18 +35,12 @@
 
       flake = {
         homeConfigurations = {
-          "wsl" = home-manager.lib.homeManagerConfiguration {
-            pkgs = nixpkgs.legacyPackages.x86_64-linux;
-            extraSpecialArgs = {
-              isWsl = true;
-            };
-            modules = [ ./User ];
-          };
+          "mor" = home-manager.lib.homeManagerConfiguration {
+            pkgs = import nixpkgs {
+              system = "x86_64-linux";
 
-          "desktop" = home-manager.lib.homeManagerConfiguration {
-            pkgs = nixpkgs.legacyPackages.x86_64-linux;
+              };
             extraSpecialArgs = {
-              isWsl = false;
             };
             modules = [ ./User ];
           };

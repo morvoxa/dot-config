@@ -1,9 +1,5 @@
 {
-  config,
   pkgs,
-  lib,
-  isWsl ? false,
-  nixpkgs,
   ...
 }:
 {
@@ -13,48 +9,25 @@
 
   programs.home-manager.enable = true;
   nixpkgs.config.allowUnfree = true;
-  home.packages =
-    with pkgs;
-    [
-      # CLI Tools ()
-      git
-      devenv
-      fastfetch
-      neovim
-      fzf
-      tree-sitter
-      tree
-      nixd
-      gcc
-      openssh
-      just
-      fd
-      ripgrep
-      #Neovim LSP + Formater
-      taplo
-      nixfmt
-      prettier
-      shfmt
-      stylua
-      lua-language-server
-      nixd
-    ]
-    # Gui for Linux
-    ++ lib.optionals (!isWsl) [
-    ];
+  home.packages = with pkgs; [
+    neovim
+    nixd
+    nixfmt
+    clang-tools
+    stylua
+    lua-language-server
+    tree-sitter
+    shfmt
+    zip
+    unzip
+    prettier
+  ];
 
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
   };
 
-  programs.tmux = {
-    enable = true;
-    extraConfig = ''
-      bind-key -n M-h previous-window
-      bind-key -n M-l next-window
-    '';
-  };
   programs.starship = {
     enable = true;
     enableBashIntegration = true;
