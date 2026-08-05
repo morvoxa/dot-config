@@ -21,6 +21,9 @@
     zip
     unzip
     prettier
+    just
+    fd
+    ripgrep
   ];
 
   programs.direnv = {
